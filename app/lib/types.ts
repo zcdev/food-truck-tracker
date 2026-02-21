@@ -2,15 +2,15 @@ export type ViewPhase = "home" | "hot-menu" | "schedule" | "food-trucks";
 
 export interface AppTracker {
     phase: ViewPhase;
-    truckId: Truck;
-    foodId: Food;
-    schedule: Schedule;
+    truckId?: Truck;
+    selectedTruck?: Truck;
 }
 
 export interface Truck {
     truckId: number;
     truckName: string;
     logo: string;
+    description: string;
 }
 
 export interface Food {
