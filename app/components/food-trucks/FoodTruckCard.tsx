@@ -8,7 +8,7 @@ type Props = {
 
 export default function FoodTruckCard({ truck, onClick }: Props) {
     return (
-        <button className='truck-logos' onClick={onClick}>
+        <button className='truck-logo' onClick={onClick}>
             <ImageWrapper
                 src={truck.logo}
                 alt={`${truck.truckName} logo`}

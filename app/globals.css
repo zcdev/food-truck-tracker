@@ -38,3 +38,78 @@ body {
   border-radius: 100%;
   border: 4px solid black;
 }
+
+.hot-menu-card {
+  min-height: 300px;
+}
+
+.hot-menu-card .img-wrapper {
+  height: 300px;
+  grid-template-rows: 300px 1fr;
+  display: inline-flex;
+  align-items: flex-end;
+  padding-bottom: 2rem;
+}
+
+.hot-menu-card .img-wrapper > img {
+  /* Override Next.js Image component styles */
+  max-width: auto;
+  height: auto;
+  /* Ensure the image maintains its aspect ratio and fits within the container */
+  max-height: auto;
+  width: 50%;
+  margin: 0;
+}
+
+.truck-logo .img-wrapper img {
+  border-radius: 100%;
+}
+
+/* Adjust the width of the h3 element in the second card to prevent text overflow */
+.hot-menu-grid:nth-child(2) h3 {
+  width: 100%;
+  margin: 0;
+}
+
+
+/* Medium devices (handheld, 900px and down) */
+ @media only screen and (width <= 900px) {  
+  .hot-menu-card {
+    min-height: 250px;
+  }
+
+  .hot-menu-card .img-wrapper {
+    height: 250px;
+    grid-template-rows: 250px 1fr;
+    display: inline-flex;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+  }
+
+  /* Adjust the width of the h3 element in the second card to prevent text overflow */
+  .hot-menu-grid:nth-child(2) h3 {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+ @media only screen and (width <= 600px) {  
+  .hot-menu-card {
+    min-height: auto;
+  }
+
+  .hot-menu-card .img-wrapper {
+    height: auto;
+    grid-template-rows: auto 1fr;
+    place-content: center;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+  }
+
+  /* Adjust the width of the h3 element in the second card to prevent text overflow */
+  .hot-menu-grid:nth-child(2) h3 {
+    width: 220px !important;
+    margin: auto !important;
+  }
+}

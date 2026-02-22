@@ -4,8 +4,8 @@ import { ImageProps } from 'next/image';
 export default function ImageWrapper({
     src,
     alt,
-    width = '150',
-    height = '150',
+    width = '200',
+    height = '200',
 }: ImageProps) {
     return (
         <div className='img-wrapper'>
@@ -14,7 +14,6 @@ export default function ImageWrapper({
                 alt={alt || ""}
                 width={width}
                 height={height}
-                style={{ borderRadius: '100%' }}
                 fetchPriority="high"
                 priority
             />
