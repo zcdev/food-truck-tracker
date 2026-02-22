@@ -8,7 +8,7 @@ type Props = {
 
 export default function FoodTruckModal({ truck, onClose }: Props) {
     return (
-        <div className='fixed inset-0 z-50 bg-stone-800 flex items-center justify-center overscroll-contain' >
+        <div className='fixed inset-0 z-50 bg-stone-800 flex items-center justify-center mx-4 md:mx-0'>
             <div className='
                 role="dialog"
                 aria-modal="true"
@@ -23,17 +23,17 @@ export default function FoodTruckModal({ truck, onClose }: Props) {
                         <p className='pb-2 mt-[-50px]'>About the Food Truck</p>
                         <h3 className='font-headline text-3xl pb-6'>{truck.truckName}</h3>
                     </div>
-                    <div className='w-full flex'>
-                        <div className='w-2/5'>
+                    <div className='w-full md:flex'>
+                        <div className='w-full md:w-2/5'>
                             <ImageWrapper
                                 className='border-4 border-black'
                                 src={truck.logo}
                                 alt={`${truck.truckName} logo`}
-                                width={150}
-                                height={150}
+                                width={200}
+                                height={200}
                             />
                         </div>
-                        <div className='w-3/5'>
+                        <div className='w-full md:w-3/5 pt-6 md:pt-0'>
                             <p className='text-lg align-middle pr-10'>{truck.description}</p>
                         </div>
                     </div>
