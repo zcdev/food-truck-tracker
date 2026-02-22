@@ -9,11 +9,11 @@ type Props = {
 export default function FoodTruckModal({ truck, onClose }: Props) {
     return (
         <div className='fixed inset-0 z-50 bg-stone-800 flex items-center justify-center mx-4 md:mx-0'>
-            <div className='
+            <div
                 role="dialog"
                 aria-modal="true"
-                className="relative max-h-[calc(100dvh-2rem)] bg-white my-auto rounded-2xl max-w-xl text-left text-black shadow-lg overflow-y-scroll"
-                'tabIndex={-1}
+                className="modal relative max-h-[calc(100dvh-2rem)] bg-white my-auto rounded-2xl max-w-xl text-left text-black shadow-lg overflow-y-scroll"
+                tabIndex={-1}
             >
                 <div className='pb-10 pl-10'>
                     <div className='w-full'>
@@ -26,11 +26,11 @@ export default function FoodTruckModal({ truck, onClose }: Props) {
                     <div className='w-full md:flex'>
                         <div className='w-full md:w-2/5'>
                             <ImageWrapper
-                                className='border-4 border-black'
+                                className='modal-img'
                                 src={truck.logo}
                                 alt={`${truck.truckName} logo`}
-                                width={200}
-                                height={200}
+                                width={170}
+                                height={170}
                             />
                         </div>
                         <div className='w-full md:w-3/5 pt-6 md:pt-0'>
