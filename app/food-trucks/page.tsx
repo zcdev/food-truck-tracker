@@ -43,8 +43,8 @@ export default function FoodTruckPage() {
     }, [isModalOpen, closeModal]);
 
     return (
-        <section className='food-truck-section pt-8 md:pt-16'>
-            <h2 className='text-3xl font-bold text-center md:text-left mb-15 md:mb-20'>Food Trucks</h2>
+        <section className='food-truck-section pt-8 md:pt-16 m-auto'>
+            <h2 className='text-3xl font-bold text-center md:text-left'>Food Trucks</h2>
             <FoodTruckGrid
                 trucks={trucks}
                 onClick={handleTruckClick}
