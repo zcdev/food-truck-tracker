@@ -15,7 +15,7 @@ export interface Truck {
 
 export interface Food {
     foodId: number;
-    truckId: number;
+    truckName: string;
     foodName: string; // Hottest item
     foodImg: string;
     description: string;

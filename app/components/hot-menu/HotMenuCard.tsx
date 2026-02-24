@@ -18,7 +18,7 @@ const rating = ({ food }: Props) => {
 
 export default function HotMenuCard({ food }: Props) {
     return (
-        <div className='flex flex-col'>
+        <>
             <ImageWrapper
                 className='food-image'
                 src={food.foodImg}
@@ -27,11 +27,12 @@ export default function HotMenuCard({ food }: Props) {
                 height={300}
             />
             <div className='text-center md:text-left'>
-                <h3 className='mt-2 text-2xl'>{food.foodName}</h3>
-                <div className='mt-2'>{rating({ food })}</div>
-                <p className='mt-2 text-lg'>{food.description}</p>
-                <p className='mt-2 text-lg font-bold text-amber-400'>Price: ${food.price.toFixed(2)}</p>
+                <h3 className='mt-2 text-2xl text-center md:text-left'>{food.foodName}</h3>
+                <div className='mt-2 text-center md:text-left'>{rating({ food })}</div>
+                <p className='mt-2 text-lg text-center md:text-left'>{food.description}</p>
+                <p className='mt-2 text-md text-center md:text-left text-yellow-100 italic'>@{food.truckName}</p>
+                <p className='mt-2 text-lg text-center md:text-left font-bold text-amber-400'>Price: ${food.price.toFixed(2)}</p>
             </div>
-        </div>
+        </>
     );
 }
