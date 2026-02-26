@@ -28,6 +28,5 @@ export interface Schedule {
     truckId: number;
     truckName: string;
     location: string;
-    frequency: number; // Interval: period of time between trucks: FYI for users, not relevant to the logic
     minutesAway: number; // Time waiting for the next truck
 }
