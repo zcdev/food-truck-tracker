@@ -4,36 +4,46 @@ import { useState, useEffect } from 'react';
 
 type Props = {
     schedule: Schedule;
-    now: Date;
-    currentTime: Date;
+    currentTime: number;
 };
 
 export default function ScheduleCard({ schedule, currentTime }: Props) {
 
-    const [secAway, setSecAway] = useState(schedule.minutesAway * 60); // in seconds
+    const milliSec = 1000;
+
+    const milliSecAway = schedule.minutesAway * 60 * milliSec;
+
+    const nextTruckTime = currentTime + milliSecAway;
+
+    const [timeAway, setTimeAway] = useState(milliSecAway);
+
+    const [nextTruck, setNextTruck] = useState(nextTruckTime);
 
     useEffect(() => {
-        const remainingSec = setInterval(() => {
-            setSecAway(prev => prev - 1);
-        }, 1000 /* 1 second */);
+        const remainingTime = setInterval(() => {
+            setTimeAway(prev => prev - milliSec); // Decrease by 1 second
+        }, milliSec);
 
-        return () => clearInterval(remainingSec);
+        return () => clearInterval(remainingTime);
+    }, []);
 
-    }, [secAway]);
+    useEffect(() => {
+        if (timeAway < 0) {
+            setTimeAway(milliSecAway);
+            setNextTruck(nextTruckTime);
+        }
+    }, [timeAway, nextTruck]);
 
-    const nextTruck = new Date(currentTime.getTime() + secAway * 1000).toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-    });
+    const formattedTimeAway = new Date(timeAway).toISOString().slice(11, 19); // Format as HH:MM:SS
 
-    const minutesAway = new Date(secAway * 1000).toISOString().substring(14, 19);
+    const formattedNextTruck = new Date(nextTruck).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return (
         <div className='schedule-card grid grid-rows-1 grid-cols-[30%_1fr_1fr_1fr_1fr] text-md text-white border-b border-stone-500 pb-4'>
             <p className='italic text-yellow-100'>@{schedule.truckName}</p>
             <p className='font-semibold'>{schedule.location}</p>
-            <p>{nextTruck}</p>
-            <p>{minutesAway}</p>
+            <p>{formattedNextTruck}</p>
+            <p>{formattedTimeAway}</p>
         </div>
     );
 }
