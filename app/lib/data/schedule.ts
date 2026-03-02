@@ -65,7 +65,7 @@ export const schedules: Schedule[] = [
         truckId: 11,
         truckName: "Smirk Street Eats",
         location: "ChatAPT",
-        minutesAway: 10,
+        minutesAway: 66,
     },
     {
         truckId: 12,
