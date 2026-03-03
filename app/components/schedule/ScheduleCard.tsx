@@ -4,36 +4,53 @@ import { useState, useEffect } from 'react';
 
 type Props = {
     schedule: Schedule;
-    now: Date;
-    currentTime: Date;
+    currentTime: number;
 };
 
 export default function ScheduleCard({ schedule, currentTime }: Props) {
 
-    const [secAway, setSecAway] = useState(schedule.minutesAway * 60); // in seconds
+    const milliSec = 1000; // 1 second in milliseconds
 
+    const milliSecAway = schedule.minutesAway * 60 * milliSec; // Convert minutesAway to milliseconds
+
+    const nextArrivalTime = currentTime + milliSecAway; // Calculate the sum of current time and milliSecAway to get the next arrival time
+
+    // State to track the remaining time until the next truck arrives, initialized with the calculated milliSecAway
+    const [nextArrival, setNextArrival] = useState(nextArrivalTime);
+    const [timeAway, setTimeAway] = useState(milliSecAway);
+
+    // Set up an interval to update the remaining time every second
     useEffect(() => {
-        const remainingSec = setInterval(() => {
-            setSecAway(prev => prev - 1);
-        }, 1000 /* 1 second */);
+        const remainingTime = setInterval(() => {
+            setTimeAway(prev => prev - milliSec); // Count down by 1 second
+        }, milliSec);
 
-        return () => clearInterval(remainingSec);
+        return () => clearInterval(remainingTime); // Clean up the interval on component unmount
+    }, []);
 
-    }, [secAway]);
+    // Reset when the timer runs out and update the next arrival
+    useEffect(() => {
+        if (timeAway < 0) {
+            setTimeAway(milliSecAway);
+            setNextArrival(nextArrivalTime);
+        }
+    }, [timeAway, nextArrival]);
 
-    const nextTruck = new Date(currentTime.getTime() + secAway * 1000).toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-    });
+    // Get the total time away in milliseconds
+    const totalTimeAway = new Date(timeAway).getTime();
 
-    const minutesAway = new Date(secAway * 1000).toISOString().substring(14, 19);
+    // Format the total time away as MM:SS, ensuring that minutes and seconds are always two digits
+    const formattedMinutesAway = `${Math.floor(totalTimeAway / 60 / milliSec).toString().padStart(2, '0')}:${Math.floor((totalTimeAway / milliSec) % 60).toString().padStart(2, '0')}`;
+
+    // Format the next arrival time as HH:MM in 12-hour format
+    const formattedNextArrival = new Date(nextArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return (
-        <div className='schedule-card grid grid-rows-1 grid-cols-[30%_1fr_1fr_1fr_1fr] text-md text-white border-b border-stone-500 pb-4'>
-            <p className='italic text-yellow-100'>@{schedule.truckName}</p>
-            <p className='font-semibold'>{schedule.location}</p>
-            <p>{nextTruck}</p>
-            <p>{minutesAway}</p>
-        </div>
+        <tr className="text-md text-white border-b border-stone-500 pb-4">
+            <td className="py-3 w-[30%]">{schedule.truckName}</td>
+            <td className="py-3">{schedule.location}</td>
+            <td className="py-3">{formattedNextArrival}</td>
+            <td className="py-3">{formattedMinutesAway}</td>
+        </tr>
     );
 }

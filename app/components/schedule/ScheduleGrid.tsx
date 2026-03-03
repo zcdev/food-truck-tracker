@@ -1,26 +1,89 @@
+'use client';
 import { Schedule } from '@/app/lib/types';
 import ScheduleCard from './ScheduleCard';
+import { sortScheduleItems, SortKey } from "@/app/lib/utils";
+import { useMemo, useState } from "react";
 
 type Props = {
     schedules: Schedule[];
-    now: Date;
-    currentTime: Date;
+    currentTime: number;
 };
 
-export default function ScheduleGrid({ schedules, now, currentTime }: Props) {
+export default function ScheduleGrid({ schedules, currentTime }: Props) {
+    // State to track the current sort key and direction
+    const [sortKey, setSortKey] = useState<SortKey>("truckName");
+    const [isDesc, setIsDesc] = useState(false);
+
+    // Handle sorting when a button in the column header is clicked
+    const onSort = (key: SortKey) => {
+        if (key === sortKey) {
+            setIsDesc(prev => !prev); // Toggle sort direction if the same button is clicked
+        } else {
+            setIsDesc(false); // Reset to ascending when changing sort key
+        }
+        setSortKey(key); // Update state with the key on sort
+    };
+
+    // Memoize the sorted schedules to avoid unnecessary re-sorting on every render
+    const sortSchedules: Schedule[] = useMemo(() => {
+        return sortScheduleItems(schedules, sortKey, isDesc);
+    }, [schedules, sortKey, isDesc]);
+
+    // Function to determine the direction of the sort arrow
+    const arrow = (key: string) => sortKey === key ? (isDesc ? " ↑" : " ↓") : "";
+
     return (
-        <div className='schedule-grid grid gap-4'>
-            <div className='schedule-card grid grid-rows-1 grid-cols-[30%_1fr_1fr_1fr_1fr] text-amber-400 text-lg font-bold border-b border-stone-500 pb-4'>
-                <h3>Truck Name</h3>
-                <h3>Location</h3>
-                <h3>Next Truck</h3>
-                <h3>Time Away</h3>
-            </div>
-            {schedules.map(schedule => (
-                <div className='schedule-grid-items' key={schedule.truckId}>
-                    <ScheduleCard schedule={schedule} now={now} currentTime={currentTime} />
-                </div>
-            ))}
+        <div className="schedule-grid">
+            <table className="w-full table-fixed border-collapse">
+                <thead>
+                    <tr className="text-amber-400 text-lg font-bold border-b border-stone-500 pb-4">
+                        <th
+                            scope="col"
+                            className="text-left py-2 w-[30%]"
+                            aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("truckName")} className="w-full text-left">
+                                Truck Name{arrow("truckName")}
+                            </button>
+                        </th>
+
+                        <th
+                            scope="col"
+                            className="text-left py-2"
+                            aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("location")} className="w-full text-left">
+                                Location{arrow("location")}
+                            </button>
+                        </th>
+
+                        <th
+                            scope="col"
+                            className="text-left py-2"
+                            aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("nextArrival")} className="w-full text-left">
+                                Next Arrival{arrow("nextArrival")}
+                            </button>
+                        </th>
+
+                        <th
+                            scope="col"
+                            className="text-left py-2"
+                            aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("minutesAway")} className="w-full text-left">
+                                Minutes Away{arrow("minutesAway")}
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {sortSchedules.map((schedule) => (
+                        <ScheduleCard key={schedule.truckId} schedule={schedule} currentTime={currentTime} />
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
-}
+};
