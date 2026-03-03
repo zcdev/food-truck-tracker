@@ -5,7 +5,7 @@ export const trucks: Truck[] = [
         truckId: 1,
         truckName: "All You Can’t Eat",
         logo: "/images/logos/logo-all-you-cant-eat.webp",
-        description: "It’s not all-you-can-eat — it’s all you ever wanted to eat. Comfort food delivered warm, handled with care by our certified “Machine Hug Specialists."
+        description: "It’s not all-you-can-eat — it’s all you ever wanted to eat. Comfort food delivered warm, handled with care by our certified “Machine Hug Specialists“."
     },
     {
         truckId: 2,

@@ -1,3 +1,4 @@
+'use client';
 import { Schedule } from '@/app/lib/types';
 import ScheduleCard from './ScheduleCard';
 import { sortScheduleItems, SortKey } from "@/app/lib/utils";
@@ -21,7 +22,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
             setIsDesc(false); // Reset to ascending when changing sort key
         }
         setSortKey(key); // Update state with the key on sort
-        return key;
     };
 
     // Memoize the sorted schedules to avoid unnecessary re-sorting on every render
@@ -33,33 +33,57 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
     const arrow = (key: string) => sortKey === key ? (isDesc ? " ↑" : " ↓") : "";
 
     return (
-        <div className='schedule-grid grid gap-4'>
-            <div className='schedule-card grid grid-rows-1 grid-cols-[30%_1fr_1fr_1fr_1fr] text-amber-400 text-lg font-bold border-b border-stone-500 pb-4'>
-                <button onClick={() => onSort("truckName")}
-                    aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"} className="text-left">
-                    Truck Name{arrow("truckName")}
-                </button>
+        <div className="schedule-grid">
+            <table className="w-full table-fixed border-collapse">
+                <thead>
+                    <tr className="text-amber-400 text-lg font-bold border-b border-stone-500 pb-4">
+                        <th
+                            scope="col"
+                            className="text-left py-2 w-[30%]"
+                            aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("truckName")} className="w-full text-left">
+                                Truck Name{arrow("truckName")}
+                            </button>
+                        </th>
 
-                <button onClick={() => onSort("location")}
-                    aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"} className="text-left">
-                    Location{arrow("location")}
-                </button>
+                        <th
+                            scope="col"
+                            className="text-left py-2"
+                            aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("location")} className="w-full text-left">
+                                Location{arrow("location")}
+                            </button>
+                        </th>
 
-                <button onClick={() => onSort("nextArrival")}
-                    aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"} className="text-left">
-                    Next Arrival{arrow("nextArrival")}
-                </button>
+                        <th
+                            scope="col"
+                            className="text-left py-2"
+                            aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("nextArrival")} className="w-full text-left">
+                                Next Arrival{arrow("nextArrival")}
+                            </button>
+                        </th>
 
-                <button onClick={() => onSort("minutesAway")}
-                    aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"} className="text-left">
-                    Minutes Away{arrow("minutesAway")}
-                </button>
-            </div>
-            {sortSchedules.map(schedule => (
-                <div className='schedule-grid-items' key={schedule.truckId}>
-                    <ScheduleCard schedule={schedule} currentTime={currentTime} />
-                </div>
-            ))}
+                        <th
+                            scope="col"
+                            className="text-left py-2"
+                            aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"}
+                        >
+                            <button onClick={() => onSort("minutesAway")} className="w-full text-left">
+                                Minutes Away{arrow("minutesAway")}
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {sortSchedules.map((schedule) => (
+                        <ScheduleCard key={schedule.truckId} schedule={schedule} currentTime={currentTime} />
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };

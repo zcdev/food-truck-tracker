@@ -46,11 +46,11 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
     const formattedNextArrival = new Date(nextArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return (
-        <div className='schedule-card grid grid-rows-1 grid-cols-[30%_1fr_1fr_1fr_1fr] text-md text-white border-b border-stone-500 pb-4'>
-            <p className='italic text-yellow-100'>@{schedule.truckName}</p>
-            <p className='font-semibold'>{schedule.location}</p>
-            <p>{formattedNextArrival}</p>
-            <p>{formattedMinutesAway}</p>
-        </div>
+        <tr className="text-md text-white border-b border-stone-500 pb-4">
+            <td className="py-3 w-[30%]">{schedule.truckName}</td>
+            <td className="py-3">{schedule.location}</td>
+            <td className="py-3">{formattedNextArrival}</td>
+            <td className="py-3">{formattedMinutesAway}</td>
+        </tr>
     );
 }
