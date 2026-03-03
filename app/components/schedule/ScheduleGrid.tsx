@@ -9,17 +9,18 @@ type Props = {
 };
 
 export default function ScheduleGrid({ schedules, currentTime }: Props) {
+    // State to track the current sort key and direction
     const [sortKey, setSortKey] = useState<SortKey>("truckName");
     const [isDesc, setIsDesc] = useState(false);
 
     // Handle sorting when a button in the column header is clicked
     const onSort = (key: SortKey) => {
         if (key === sortKey) {
-            setIsDesc(prev => !prev);
+            setIsDesc(prev => !prev); // Toggle sort direction if the same button is clicked
         } else {
             setIsDesc(false); // Reset to ascending when changing sort key
         }
-        setSortKey(key);
+        setSortKey(key); // Update state with the key on sort
         return key;
     };
 
@@ -28,7 +29,7 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
         return sortScheduleItems(schedules, sortKey, isDesc);
     }, [schedules, sortKey, isDesc]);
 
-    // Helper function to determine the direction of the sort arrow
+    // Function to determine the direction of the sort arrow
     const arrow = (key: string) => sortKey === key ? (isDesc ? " ↑" : " ↓") : "";
 
     return (
@@ -46,12 +47,12 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
 
                 <button onClick={() => onSort("nextArrival")}
                     aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"} className="text-left">
-                    Next Truck{arrow("nextArrival")}
+                    Next Arrival{arrow("nextArrival")}
                 </button>
 
                 <button onClick={() => onSort("minutesAway")}
                     aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"} className="text-left">
-                    Time Away{arrow("minutesAway")}
+                    Minutes Away{arrow("minutesAway")}
                 </button>
             </div>
             {sortSchedules.map(schedule => (
