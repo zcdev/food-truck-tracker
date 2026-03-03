@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Schedule } from "@/app/lib/types";
 
-export type SortKey = "truckName" | "location" | "minutesAway" | "nextTruck";
-export type SortDir = "asc" | "desc";
+export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";
 
 // Custom hook to get the current time, updating every second
 export function useCurrentTime(intervalMs = 1000) {
@@ -19,24 +18,20 @@ export function useCurrentTime(intervalMs = 1000) {
     return now;
 }
 
-export function sortScheduleItems(schedules: Schedule[],
-    sortKey: SortKey | null,
-    sortDir: SortDir = "asc") {
+export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDesc: boolean): Schedule[] {
 
-    if (!sortKey) return schedules;
-
-    const dir = sortDir === "asc" ? 1 : -1; // Determine sort direction multiplier as a toggle by flipping between 1 and -1
+    const dir = isDesc ? -1 : 1; // Determine sort direction multiplier as a toggle by flipping between -1 and 1
 
     return [...schedules].sort((a, b) => {
 
         // Value for Next Truck is derived from minutesAway, so we handle it as a special case
-        if (sortKey === "nextTruck") {
+        if (sortKey === "nextArrival") {
             return (a.minutesAway - b.minutesAway) * dir;
         }
 
         // Values for other keys
-        const valA = a[sortKey] || "";
-        const valB = b[sortKey] || "";
+        const valA = a[sortKey] ?? null;
+        const valB = b[sortKey] ?? null;
 
         // Numeric sort
         if (typeof valA === "number" && typeof valB === "number") {
