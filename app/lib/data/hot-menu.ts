@@ -9,7 +9,7 @@ export const foods: Food[] = [
         description: "Everything you’ve ever wanted in a burger — just tell us, and we’ll stack it high and serve it warm.",
         price: 12,
         rating: 5,
-        tags: ["beef", "american", "savory"],
+        tags: ["beef", "american", "fast food", "savory", "warm"],
     },
     {
         foodId: 2,
@@ -19,7 +19,7 @@ export const foods: Food[] = [
         description: "Simple. Honest. Reliable. Like a pure friend. No complicated ingredients — just comfort you can count on. Always here for you, fully loaded with understanding.",
         price: 6,
         rating: 5,
-        tags: [],
+        tags: ["vegetarian-friendly", "sweet", "dessert", "breakfast", "warm"],
     },
     {
         foodId: 3,
@@ -29,7 +29,7 @@ export const foods: Food[] = [
         description: "Our most famous fried chicken — slow and patient in the fryer, because greatness takes time. Your patience is worth the prize. Check the schedule and catch the truck before it’s gone.",
         price: 20,
         rating: 5,
-        tags: ["chicken", "savory"],
+        tags: ["savory", "warm", "spicy", "fast food"],
     },
     {
         foodId: 4,
@@ -39,7 +39,7 @@ export const foods: Food[] = [
         description: "Ridiculously delicious and fulfilling. Always stacked more than four layers deep — and we’ll keep stacking until you say stop.",
         price: 24,
         rating: 4,
-        tags: ["dessert", "breakfast", "sweet"],
+        tags: ["dessert", "breakfast", "sweet", "warm", "vegetarian-friendly"],
     },
     {
         foodId: 5,
@@ -49,7 +49,7 @@ export const foods: Food[] = [
         description: "“Lazy Egg” isn’t overcooked. We flip it just right — fried in the pan, without the pain.",
         price: 8,
         rating: 3,
-        tags: ["vegetarian-friendly", "savory"],
+        tags: ["vegetarian-friendly", "savory", "warm", "breakfast"],
     },
     {
         foodId: 6,
@@ -59,17 +59,17 @@ export const foods: Food[] = [
         description: "Intelligent formulas. Concise procedures. A meaningful takeaway. Crafted masterfully, cooked patiently, and delivered kindly.",
         price: 28,
         rating: 5,
-        tags: ["chicken", "asian", "savory"],
+        tags: ["chicken", "asian", "Indian", "savory", "warm", "spicy"],
     },
     {
         foodId: 7,
         truckName: "Las Vegan",
         foodName: "No Meating Salad",
         foodImg: "/images/foods/no-meating-salad.webp",
-        description: "No carbs. No meat. No worries. \nNo overthinking. Purely vegan, sincerely simple. Sometimes, just existing is enough.",
+        description: "No carbs. No meat (I'm Possible™). No worries. \nNo overthinking. Purely vegan, sincerely simple. Sometimes, just existing is enough.",
         price: 16,
         rating: 3,
-        tags: ["vegan", "vegetarian", "organic", "savory"],
+        tags: ["vegan", "vegetarian", "organic", "savory", "healthy", "cold", "plant-based"],
     },
     {
         foodId: 8,
@@ -79,7 +79,7 @@ export const foods: Food[] = [
         description: "It doesn’t take a fortune to get a Techie Cookie — but you’ll always receive one. Especially around 3am.",
         price: 30,
         rating: 2,
-        tags: ["asian", "sweet"],
+        tags: ["asian", "Chinese", "sweet", "dessert", "cold"],
     },
     {
         foodId: 9,
@@ -89,7 +89,7 @@ export const foods: Food[] = [
         description: "Our hottest item comes with a double meaning. Whether it’s a meal or a message… that’s your take to decide.",
         price: 13,
         rating: 5,
-        tags: ["asian", "savory"],
+        tags: ["asian", "Chinese", "savory", "warm", "spicy", "fast food"],
     },
     {
         foodId: 10,
@@ -99,7 +99,7 @@ export const foods: Food[] = [
         description: "Chewy cheese, secret sauce, and endless toppings (while supplies last). Built on superior dough with a thick, golden crust, baked at blazing heat and ready within 30 minutes. Stay cool.",
         price: 20,
         rating: 5,
-        tags: ["italian", "savory"],
+        tags: ["italian", "savory", "warm", "fast food"],
     },
     {
         foodId: 11,
@@ -109,7 +109,7 @@ export const foods: Food[] = [
         description: "You might question the surprising recipe we discovered during our travels… but whoops — here’s a Cookie 4 Ya.",
         price: 12,
         rating: 1,
-        tags: ["dessert", "sweet"],
+        tags: ["dessert", "sweet", "warm", "vegetarian-friendly"],
     },
     {
         foodId: 12,
@@ -119,6 +119,6 @@ export const foods: Food[] = [
         description: "We may arrive last — but we’re always the best one. Our famous “Instant BreakFast” goes fast, so come early and catch yours.",
         price: 17,
         rating: 4,
-        tags: ["breakfast", "sweet"],
+        tags: ["breakfast", "sweet", "fruits", "vegetarian-friendly", "healthy", "cold", "plant-based"],
     },
 ];
