@@ -17,7 +17,7 @@ export default function SchedulePage() {
         <section className='schedule-section max-w-5xl pt-8 md:pt-16'>
             <h2 className='text-3xl font-bold text-center md:text-left gap-10 mb-[30px] md:mb-[50px]'>Food Truck Schedule</h2>
             <ScheduleGrid schedules={schedules} currentTime={currentTime} />
-            <h4 className='text-amber-400 text-lg font-bold pt-4'>Current Time: {formattedCurrentTime}</h4>
+            <div><p className='text-amber-400 text-lg font-bold pt-4'>Current Time: {formattedCurrentTime}</p></div>
         </section>
     );
 }

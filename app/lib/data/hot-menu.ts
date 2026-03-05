@@ -66,7 +66,7 @@ export const foods: Food[] = [
         truckName: "Las Vegan",
         foodName: "No Meating Salad",
         foodImg: "/images/foods/no-meating-salad.webp",
-        description: "No carbs. No meat (I'm Possible™). No worries. \nNo overthinking. Purely vegan, sincerely simple. Sometimes, just existing is enough.",
+        description: "No carbs. No meat (I’m Possible™). No worries. \nNo overthinking. Purely vegan, sincerely simple. Sometimes, just existing is enough.",
         price: 16,
         rating: 3,
         tags: ["vegan", "vegetarian", "organic", "savory", "healthy", "cold", "plant-based"],
