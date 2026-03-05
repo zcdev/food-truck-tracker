@@ -19,22 +19,22 @@ export default function HotMenuPage() {
     // Memoized filtered foods based on the search query
     const { filteredFoods, foodTruckIds } = useMemo(() => {
         if (!queryString && queryString === '') {
-            return { filteredFoods: foods, foodTruckId: null };
+            return { filteredFoods: foods, foodTruckIds: null };
         }
 
         const matches = foods.filter((food) => {
             const tags = food.tags?.join(' ').toLowerCase() ?? '';
-            const haystack = `${food.foodId} ${food.truckName} ${food.foodName} ${food.description} ${tags}`.toLowerCase();
+            const haystack = `${food.truckId} ${food.truckName} ${food.foodName} ${food.description} ${tags}`.toLowerCase();
             return haystack.toLowerCase().includes(queryString);
         });
 
-        const foodTruckIds: number[] = matches.map(match => match.foodId);
+        const foodTruckIds: number[] = matches.map(match => match.truckId);
 
         return { filteredFoods: matches ?? null, foodTruckIds: foodTruckIds ?? undefined };
     }, [queryString]);
 
-    // Debugging logs to check the foodTruckId and filteredFoods
-    // console.log('foodtruckId:', foodTruckId);
+    // Debugging logs to check the foodTruckIds and filteredFoods
+    // console.log('foodTruckIds:', foodTruckIds);
     console.log('filteredFoods:', filteredFoods);
     console.log('foodTruckIds', foodTruckIds);
 

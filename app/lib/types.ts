@@ -1,11 +1,5 @@
 export type ViewPhase = "home" | "hot-menu" | "schedule" | "food-trucks";
 
-export interface AppTracker {
-    phase: ViewPhase;
-    truckId?: Truck;
-    selectedTruck?: Truck;
-}
-
 export interface Truck {
     truckId: number;
     truckName: string;
@@ -14,7 +8,7 @@ export interface Truck {
 }
 
 export interface Food {
-    foodId: number;
+    truckId: number;
     truckName: string;
     foodName: string; // Hottest item
     foodImg: string;

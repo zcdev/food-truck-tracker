@@ -2,7 +2,7 @@ import { Food } from "../types";
 
 export const foods: Food[] = [
     {
-        foodId: 1,
+        truckId: 1,
         truckName: "All You Can’t Eat",
         foodName: "Stacked Burger",
         foodImg: "/images/foods/stacked-burger.webp",
@@ -12,7 +12,7 @@ export const foods: Food[] = [
         tags: ["beef", "american", "fast food", "savory", "warm"],
     },
     {
-        foodId: 2,
+        truckId: 2,
         truckName: "BFF Da Bomb",
         foodName: "Best Thing Ever \n(Since Sliced Bread)",
         foodImg: "/images/foods/bff-sliced-bread.webp",
@@ -22,7 +22,7 @@ export const foods: Food[] = [
         tags: ["vegetarian-friendly", "sweet", "dessert", "breakfast", "warm"],
     },
     {
-        foodId: 3,
+        truckId: 3,
         truckName: "FCC Fried Chicken Club",
         foodName: "Fried Chicken WINs",
         foodImg: "/images/foods/fcc-fried-chicken-wins.webp",
@@ -32,7 +32,7 @@ export const foods: Food[] = [
         tags: ["savory", "warm", "spicy", "fast food"],
     },
     {
-        foodId: 4,
+        truckId: 4,
         truckName: "Food 4 Thought",
         foodName: "Fullstack Fluffy Pancakes",
         foodImg: "/images/foods/fullstack-fluffy-pancakes.webp",
@@ -42,7 +42,7 @@ export const foods: Food[] = [
         tags: ["dessert", "breakfast", "sweet", "warm", "vegetarian-friendly"],
     },
     {
-        foodId: 5,
+        truckId: 5,
         truckName: "Goof Food Rocket",
         foodName: "Lazy Egg",
         foodImg: "/images/foods/lazy-egg.webp",
@@ -52,7 +52,7 @@ export const foods: Food[] = [
         tags: ["vegetarian-friendly", "savory", "warm", "breakfast"],
     },
     {
-        foodId: 6,
+        truckId: 6,
         truckName: "Guru Chef",
         foodName: "NaN + Currying",
         foodImg: "/images/foods/nan-currying.webp",
@@ -62,7 +62,7 @@ export const foods: Food[] = [
         tags: ["chicken", "asian", "Indian", "savory", "warm", "spicy"],
     },
     {
-        foodId: 7,
+        truckId: 7,
         truckName: "Las Vegan",
         foodName: "No Meating Salad",
         foodImg: "/images/foods/no-meating-salad.webp",
@@ -72,7 +72,7 @@ export const foods: Food[] = [
         tags: ["vegan", "vegetarian", "organic", "savory", "healthy", "cold", "plant-based"],
     },
     {
-        foodId: 8,
+        truckId: 8,
         truckName: "Orbitz Explorer",
         foodName: "Techie Cookie",
         foodImg: "/images/foods/techie-cookie.webp",
@@ -82,7 +82,7 @@ export const foods: Food[] = [
         tags: ["asian", "Chinese", "sweet", "dessert", "cold"],
     },
     {
-        foodId: 9,
+        truckId: 9,
         truckName: "Panda Express",
         foodName: "Take ME Out",
         foodImg: "/images/foods/take-me-out.webp",
@@ -92,7 +92,7 @@ export const foods: Food[] = [
         tags: ["asian", "Chinese", "savory", "warm", "spicy", "fast food"],
     },
     {
-        foodId: 10,
+        truckId: 10,
         truckName: "Pizza+",
         foodName: "The Pizza of the Pizza++",
         foodImg: "/images/foods/pizza-plus-plus.webp",
@@ -102,7 +102,7 @@ export const foods: Food[] = [
         tags: ["italian", "savory", "warm", "fast food"],
     },
     {
-        foodId: 11,
+        truckId: 11,
         truckName: "Smirk Street Eats",
         foodName: "Cookie 4 Ya",
         foodImg: "/images/foods/cookies-4-ya.webp",
@@ -112,7 +112,7 @@ export const foods: Food[] = [
         tags: ["dessert", "sweet", "warm", "vegetarian-friendly"],
     },
     {
-        foodId: 12,
+        truckId: 12,
         truckName: "The Last Supper",
         foodName: "Instant BreakFast",
         foodImg: "/images/foods/instant-breakfast.webp",
