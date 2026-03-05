@@ -46,7 +46,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                                 Truck Name{arrow("truckName")}
                             </button>
                         </th>
-
                         <th
                             scope="col"
                             className="text-left py-2"
@@ -56,7 +55,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                                 Location{arrow("location")}
                             </button>
                         </th>
-
                         <th
                             scope="col"
                             className="text-left py-2"
@@ -66,7 +64,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                                 Next Arrival{arrow("nextArrival")}
                             </button>
                         </th>
-
                         <th
                             scope="col"
                             className="text-left py-2"

@@ -6,10 +6,12 @@ import { useMemo } from 'react';
 
 export default function SchedulePage() {
 
+    // Get the current time using the custom hook, which updates every second
     const currentTime = useCurrentTime();
 
+    // Memoize the formatted current time to avoid unnecessary re-computation on every render
     const formattedCurrentTime = useMemo(() => {
-        if (currentTime == null) return "--:--:--";
+        if (currentTime === 0) return "--:--:--";
         return new Date(currentTime).toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",

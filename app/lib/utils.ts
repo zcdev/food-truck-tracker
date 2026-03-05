@@ -5,12 +5,15 @@ export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";
 
 // Custom hook to get the current time, updating every second
 export function useCurrentTime(intervalMs = 1000) {
-    const [now, setNow] = useState(() => Date.now());
+
+    // State to hold the current time in milliseconds since the Unix epoch
+    const [now, setNow] = useState<number>(0);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setNow(Date.now());
-        }, intervalMs);
+        const tick = () => setNow(Date.now());
+
+        tick();
+        const interval = setInterval(tick, intervalMs);
 
         return () => clearInterval(interval);
     }, [intervalMs]);
@@ -18,6 +21,7 @@ export function useCurrentTime(intervalMs = 1000) {
     return now;
 }
 
+// Function to sort schedule items based on a given key and direction
 export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDesc: boolean): Schedule[] {
 
     const dir = isDesc ? -1 : 1; // Determine sort direction multiplier as a toggle by flipping between -1 and 1
@@ -42,5 +46,4 @@ export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDes
         return String(valA).localeCompare(String(valB)) * dir;
 
     });
-
 }
