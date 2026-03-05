@@ -4,6 +4,8 @@ import { Truck } from '@/app/lib/types';
 import { trucks } from '@/app/lib/data/trucks';
 import FoodTruckGrid from "@/app/components/food-trucks/FoodTruckGrid";
 import FoodTruckModal from '../components/food-trucks/FoodTruckModal';
+import { useSearchParams } from 'next/navigation';
+import { parseTruckIds, filterByTruckIds } from '../lib/utils';
 
 export default function FoodTruckPage() {
     // State to track the currently selected truck for the modal
@@ -11,6 +13,8 @@ export default function FoodTruckPage() {
 
     // State to track whether the modal is open
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const searchParams = useSearchParams();
 
     // Handle truck card click to open the modal
     const handleTruckClick = (truck: Truck) => {
@@ -42,11 +46,15 @@ export default function FoodTruckPage() {
 
     }, [isModalOpen, closeModal]);
 
+    const showed = parseTruckIds(searchParams.get('truckIds'));
+    const visibleTrucks = filterByTruckIds(trucks, showed, truck => truck.truckId);
+
     return (
         <section className='food-truck-section pt-8 md:pt-16 m-auto'>
             <h2 className='text-3xl font-bold text-center md:text-left'>Food Trucks</h2>
             <FoodTruckGrid
                 trucks={trucks}
+                visibleTrucks={visibleTrucks}
                 onClick={handleTruckClick}
             />
             {isModalOpen

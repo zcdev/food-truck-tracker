@@ -1,9 +1,8 @@
 'use client';
 import { foods } from '@/app/lib/data/hot-menu';
-import { Food } from '@/app/lib/types';
 import HotMenuGrid from '@/app/components/hot-menu/HotMenuGrid';
 import SearchInput from '../components/search/SearchInput';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export default function HotMenuPage() {
@@ -22,7 +21,7 @@ export default function HotMenuPage() {
             return { filteredFoods: foods, foodTruckIds: null };
         }
 
-        const matches = foods.filter((food) => {
+        const matches = foods.filter(food => {
             const tags = food.tags?.join(' ').toLowerCase() ?? '';
             const haystack = `${food.truckId} ${food.truckName} ${food.foodName} ${food.description} ${tags}`.toLowerCase();
             return haystack.toLowerCase().includes(queryString);
@@ -32,11 +31,6 @@ export default function HotMenuPage() {
 
         return { filteredFoods: matches ?? null, foodTruckIds: foodTruckIds ?? undefined };
     }, [queryString]);
-
-    // Debugging logs to check the foodTruckIds and filteredFoods
-    // console.log('foodTruckIds:', foodTruckIds);
-    console.log('filteredFoods:', filteredFoods);
-    console.log('foodTruckIds', foodTruckIds);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
