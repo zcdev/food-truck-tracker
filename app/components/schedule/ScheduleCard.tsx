@@ -5,9 +5,10 @@ import { useState, useEffect } from 'react';
 type Props = {
     schedule: Schedule;
     currentTime: number;
+    isShowed?: boolean;
 };
 
-export default function ScheduleCard({ schedule, currentTime }: Props) {
+export default function ScheduleCard({ schedule, currentTime, isShowed }: Props) {
 
     const milliSec = 1000; // 1 second in milliseconds
 
@@ -46,7 +47,7 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
     const formattedNextArrival = new Date(nextArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return (
-        <tr className="text-md text-white border-b border-stone-500 pb-4">
+        <tr className="text-md text-white border-b border-stone-500 pb-4" style={{ opacity: isShowed ? 1 : 0.2 }}>
             <td className="py-3 w-[30%] text-yellow-100 italic">@{schedule.truckName}</td>
             <td className="py-3">{schedule.location}</td>
             <td className="py-3">{formattedNextArrival}</td>

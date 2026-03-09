@@ -1,8 +1,8 @@
 'use client';
 import { schedules } from '@/app/lib/data/schedule';
 import ScheduleGrid from '@/app/components/schedule/ScheduleGrid';
-import { useCurrentTime } from '@/app/lib/utils';
 import { useMemo } from 'react';
+import { useCurrentTime } from '@/app/lib/utils';
 
 export default function SchedulePage() {
 

@@ -39,16 +39,14 @@ export default function HotMenuPage() {
 
     // Handler for search input changes
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // Update search query state is handled onSubmit to prevent excessive updates while typing
         e.preventDefault();
+
+        // Update search query state is handled onSubmit to prevent excessive updates while typing
         setQuery(e.currentTarget.value);
+
         // If input field is cleared, reset the search results and URL parameters
         if (e.currentTarget.value === '' && query !== '') {
-            setQuery('');
-            setSearchedFoods(foods);
-            params.delete('query');
-            params.delete('truckIds');
-            router.replace(`${pathname}`);
+            resetSearch();
         }
     };
 
@@ -63,7 +61,18 @@ export default function HotMenuPage() {
             params.set('query', queryString);
             router.replace(`${pathname}?${params}&truckIds=${idsString}`);
             setSearchedFoods(filteredFoods);
+        } else {
+            resetSearch();
         }
+    };
+
+    // Function to reset the search results and clear URL parameters
+    const resetSearch = () => {
+        setQuery('');
+        params.delete('query');
+        params.delete('truckIds');
+        router.replace(`${pathname}`);
+        setSearchedFoods(foods);
     };
 
     return (

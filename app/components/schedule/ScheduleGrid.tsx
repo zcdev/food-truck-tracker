@@ -1,8 +1,9 @@
 'use client';
 import { Schedule } from '@/app/lib/types';
 import ScheduleCard from './ScheduleCard';
-import { sortScheduleItems, SortKey } from "@/app/lib/utils";
 import { useMemo, useState } from "react";
+import { useSearchParams } from 'next/navigation';
+import { sortScheduleItems, SortKey, parseTruckIds, filterByTruckIds } from "@/app/lib/utils";
 
 type Props = {
     schedules: Schedule[];
@@ -32,12 +33,17 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
     // Function to determine the direction of the sort arrow
     const arrow = (key: string) => sortKey === key ? (isDesc ? " ↑" : " ↓") : "";
 
+    const searchParams = useSearchParams();
+
+    const showed = parseTruckIds(searchParams.get('truckIds'));
+    const visibleSchedules = filterByTruckIds(schedules, showed, schedule => schedule.truckId);
+
     return (
         <div className="schedule-grid">
             <table className="w-full table-fixed border-collapse">
                 <thead>
                     <tr className="text-amber-400 text-lg font-bold border-b border-stone-500 pb-4">
-                        <th
+                        <td
                             scope="col"
                             className="text-left py-2 w-[30%]"
                             aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
@@ -45,9 +51,8 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             <button onClick={() => onSort("truckName")} className="w-full text-left">
                                 Truck Name{arrow("truckName")}
                             </button>
-                        </th>
-
-                        <th
+                        </td>
+                        <td
                             scope="col"
                             className="text-left py-2"
                             aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"}
@@ -55,9 +60,8 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             <button onClick={() => onSort("location")} className="w-full text-left">
                                 Location{arrow("location")}
                             </button>
-                        </th>
-
-                        <th
+                        </td>
+                        <td
                             scope="col"
                             className="text-left py-2"
                             aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"}
@@ -65,9 +69,8 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             <button onClick={() => onSort("nextArrival")} className="w-full text-left">
                                 Next Arrival{arrow("nextArrival")}
                             </button>
-                        </th>
-
-                        <th
+                        </td>
+                        <td
                             scope="col"
                             className="text-left py-2"
                             aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"}
@@ -75,13 +78,16 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             <button onClick={() => onSort("minutesAway")} className="w-full text-left">
                                 Minutes Away{arrow("minutesAway")}
                             </button>
-                        </th>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
-                    {sortSchedules.map((schedule) => (
-                        <ScheduleCard key={schedule.truckId} schedule={schedule} currentTime={currentTime} />
-                    ))}
+                    {sortSchedules.map(schedule => {
+                        const isShowed = visibleSchedules.some(visibleSchedule => visibleSchedule.truckId === schedule.truckId);
+                        return (
+                            <ScheduleCard key={schedule.truckId} schedule={schedule} currentTime={currentTime} isShowed={isShowed} />
+                        );
+                    })}
                 </tbody>
             </table>
         </div>
