@@ -2,24 +2,26 @@
 
 type Props = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onSubmit?: (e: React.SubmitEvent<HTMLFormElement>) => void;
     query: string;
 };
 
-export default function SearchInput({ onChange, onKeyDown, query }: Props) {
+export default function SearchInput({ onChange, onSubmit, query }: Props) {
     return (
         <div className='search-input max-w-sm my-6 md:mb-10'>
-            <input
-                id='search'
-                type='text'
-                placeholder='Enter what you are craving now'
-                className='w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500'
-                value={query}
-                onChange={onChange}
-                onKeyDown={onKeyDown}
-                autoComplete="off"
-                aria-label='Enter what you are craving now'
-            />
+            <form onSubmit={onSubmit} className="flex items-end">
+                <input
+                    id='search'
+                    type='text'
+                    placeholder='What you are craving now?'
+                    className='flex w-full text-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 px-4 py-3 mr-4'
+                    value={query}
+                    onChange={onChange}
+                    autoComplete="off"
+                    aria-label='What you are craving now'
+                />
+                <input type='submit' value='Search' className='flex mt-2 w-auto text-md text-white font-bold bg-orange-400 rounded-lg hover:bg-orange-500 px-4 py-3' />
+            </form>
         </div>
     );
 }
