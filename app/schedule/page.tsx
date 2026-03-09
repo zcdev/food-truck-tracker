@@ -1,24 +1,23 @@
 'use client';
 import { schedules } from '@/app/lib/data/schedule';
 import ScheduleGrid from '@/app/components/schedule/ScheduleGrid';
+import { useCurrentTime } from '@/app/lib/utils';
 import { useMemo } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { useCurrentTime, parseTruckIds, filterByTruckIds } from '@/app/lib/utils';
 
 export default function SchedulePage() {
 
+    // Get the current time using the custom hook, which updates every second
     const currentTime = useCurrentTime();
 
+    // Memoize the formatted current time to avoid unnecessary re-computation on every render
     const formattedCurrentTime = useMemo(() => {
-        if (currentTime == null) return "--:--:--";
+        if (currentTime === 0) return "--:--:--";
         return new Date(currentTime).toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit",
         });
     }, [currentTime]);
-
-    const searchParams = useSearchParams();
 
     return (
         <section className='schedule-section max-w-5xl pt-8 md:pt-16'>

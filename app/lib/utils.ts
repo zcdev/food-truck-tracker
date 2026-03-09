@@ -51,7 +51,7 @@ export type ShowedTruckIds = number[] | null;
 
 // Function to parse a comma-separated string of truck IDs into an array of numbers
 export function parseTruckIds(value: string | null | undefined): ShowedTruckIds {
-    if (!value) return null;
+    if (!value) return [];
 
     const ids = value
         .split(',')

@@ -44,7 +44,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                 <thead>
                     <tr className="text-amber-400 text-lg font-bold border-b border-stone-500 pb-4">
                         <td
-                            scope="col"
                             className="text-left py-2 w-[30%]"
                             aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
@@ -53,7 +52,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             </button>
                         </td>
                         <td
-                            scope="col"
                             className="text-left py-2"
                             aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
@@ -62,7 +60,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             </button>
                         </td>
                         <td
-                            scope="col"
                             className="text-left py-2"
                             aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
@@ -71,7 +68,6 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                             </button>
                         </td>
                         <td
-                            scope="col"
                             className="text-left py-2"
                             aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"}
                         >

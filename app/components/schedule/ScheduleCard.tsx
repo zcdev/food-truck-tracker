@@ -30,7 +30,7 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
 
     // Reset when the timer runs out and update the next arrival
     useEffect(() => {
-        if (timeAway < 0) {
+        if (timeAway <= 0) {
             setTimeAway(milliSecAway);
             setNextArrival(nextArrivalTime);
         }

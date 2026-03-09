@@ -15,13 +15,12 @@ export default function HotMenuPage() {
     const router = useRouter();
     const pathname = usePathname();
     const params = new URLSearchParams(searchParams.toString());
-    const queryString = query.trim().toLowerCase() || '';
-    const keywords = query.toLowerCase().split(" ");
+    const keywords = query.toLowerCase().split(' ');
 
 
     // Memoized filtered foods based on the search query
     const { filteredFoods, foodTruckIds } = useMemo(() => {
-        if (!queryString && queryString === '') {
+        if (!keywords && keywords === '') {
             return { filteredFoods: foods, foodTruckIds: null };
         }
 
@@ -37,7 +36,7 @@ export default function HotMenuPage() {
 
         // Return the filtered foods and the corresponding truck IDs (or null if no query)
         return { filteredFoods: matches ?? null, foodTruckIds: foodTruckIds ?? undefined };
-    }, [queryString]);
+    }, [keywords]);
 
     // Handler for search input changes
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,9 +58,10 @@ export default function HotMenuPage() {
         const idsString: string | undefined = foodTruckIds?.join(',') ?? '';
 
         // If there is a valid query string, update the URL with the query and truck IDs
-        if (queryString && queryString !== '') {
-            params.set('query', queryString);
-            router.replace(`${pathname}?${params}&truckIds=${idsString}`);
+        if (keywords && keywords.length > 0) {
+            params.set('query', keywords.join(' '));
+            params.set('truckIds', idsString);
+            router.replace(`${pathname}?${params}`);
             setSearchedFoods(filteredFoods);
         } else {
             resetSearch();

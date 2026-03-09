@@ -1,5 +1,4 @@
 import { Truck } from '@/app/lib/types';
-import { useState } from 'react';
 
 import FoodTruckCard from './FoodTruckCard';
 
