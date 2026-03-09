@@ -5,12 +5,15 @@ export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";
 
 // Custom hook to get the current time, updating every second
 export function useCurrentTime(intervalMs = 1000) {
-    const [now, setNow] = useState<number | null>(null);
+
+    // State to hold the current time in milliseconds since the Unix epoch
+    const [now, setNow] = useState<number>(0);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setNow(Date.now());
-        }, intervalMs);
+        const tick = () => setNow(Date.now());
+
+        tick();
+        const interval = setInterval(tick, intervalMs);
 
         return () => clearInterval(interval);
     }, [intervalMs]);
