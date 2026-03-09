@@ -16,6 +16,8 @@ export default function HotMenuPage() {
     const pathname = usePathname();
     const params = new URLSearchParams(searchParams.toString());
     const queryString = query.trim().toLowerCase() || '';
+    const keywords = query.toLowerCase().split(" ");
+
 
     // Memoized filtered foods based on the search query
     const { filteredFoods, foodTruckIds } = useMemo(() => {
@@ -27,7 +29,7 @@ export default function HotMenuPage() {
         const matches = foods.filter(food => {
             const tags = food.tags?.join(' ').toLowerCase() ?? '';
             const haystack = `${food.truckId} ${food.truckName} ${food.foodName} ${food.description} ${tags}`.toLowerCase();
-            return haystack.toLowerCase().includes(queryString);
+            return keywords.every(keyword => haystack.includes(keyword));
         });
 
         // Extract truck IDs from the matched foods

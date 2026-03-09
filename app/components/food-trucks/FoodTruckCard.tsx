@@ -4,12 +4,11 @@ import ImageWrapper from '@/app/components/ui/ImageWrapper';
 type Props = {
     truck: Truck;
     onClick: () => void;
-    isShowed?: boolean;
 };
 
-export default function FoodTruckCard({ truck, onClick, isShowed }: Props) {
+export default function FoodTruckCard({ truck, onClick }: Props) {
     return (
-        <button className='truck-logo' onClick={onClick} style={{ opacity: isShowed ? 1 : 0.2 }}>
+        <button className='truck-logo' onClick={onClick}>
             <ImageWrapper
                 src={truck.logo}
                 alt={`${truck.truckName} logo`}

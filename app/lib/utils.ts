@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Schedule } from "@/app/lib/types";
 
-export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";
-
 // Custom hook to get the current time, updating every second
 export function useCurrentTime(intervalMs = 1000) {
 
@@ -20,6 +18,8 @@ export function useCurrentTime(intervalMs = 1000) {
 
     return now;
 }
+
+export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";
 
 // Function to sort schedule items based on the specified key and direction
 export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDesc: boolean): Schedule[] {
@@ -49,6 +49,7 @@ export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDes
 
 export type ShowedTruckIds = number[] | null;
 
+// Function to parse a comma-separated string of truck IDs into an array of numbers
 export function parseTruckIds(value: string | null | undefined): ShowedTruckIds {
     if (!value) return null;
 

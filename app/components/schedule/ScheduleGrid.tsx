@@ -36,7 +36,7 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
     const searchParams = useSearchParams();
 
     const showed = parseTruckIds(searchParams.get('truckIds'));
-    const visibleSchedules = filterByTruckIds(schedules, showed, schedule => schedule.truckId);
+    const visibleSchedules = filterByTruckIds(sortSchedules, showed, schedule => schedule.truckId);
 
     return (
         <div className="schedule-grid">
@@ -82,10 +82,9 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {sortSchedules.map(schedule => {
-                        const isShowed = visibleSchedules.some(visibleSchedule => visibleSchedule.truckId === schedule.truckId);
+                    {visibleSchedules.map(schedule => {
                         return (
-                            <ScheduleCard key={schedule.truckId} schedule={schedule} currentTime={currentTime} isShowed={isShowed} />
+                            <ScheduleCard key={schedule.truckId} schedule={schedule} currentTime={currentTime} />
                         );
                     })}
                 </tbody>
