@@ -10,7 +10,7 @@ export default function HotMenuGrid({ foods }: Props) {
     return (
         <div className='hot-menu-grid grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-x-20 md:gap-y-10 mt-[55px] md:mt-0'>
             {foods.map(food => (
-                <div className='hot-menu-card' key={food.foodId}>
+                <div className='hot-menu-card' key={food.truckId}>
                     <HotMenuItem food={food} />
                 </div>
             ))}

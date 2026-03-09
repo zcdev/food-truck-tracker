@@ -30,7 +30,7 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
 
     // Reset when the timer runs out and update the next arrival
     useEffect(() => {
-        if (timeAway < 0) {
+        if (timeAway <= 0) {
             setTimeAway(milliSecAway);
             setNextArrival(nextArrivalTime);
         }
@@ -47,7 +47,7 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
 
     return (
         <tr className="text-md text-white border-b border-stone-500 pb-4">
-            <td className="py-3 w-[30%]">{schedule.truckName}</td>
+            <td className="py-3 w-[30%] text-yellow-100 italic">@{schedule.truckName}</td>
             <td className="py-3">{schedule.location}</td>
             <td className="py-3">{formattedNextArrival}</td>
             <td className="py-3">{formattedMinutesAway}</td>
