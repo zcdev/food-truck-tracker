@@ -46,6 +46,7 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
     const formattedNextArrival = new Date(nextArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return (
+
         <tr className="text-md text-white border-b border-stone-500 pb-4">
             <td className="py-3 w-[30%] text-yellow-100 italic">@{schedule.truckName}</td>
             <td className="py-3">{schedule.location}</td>

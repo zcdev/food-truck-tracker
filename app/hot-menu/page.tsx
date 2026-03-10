@@ -28,7 +28,7 @@ export default function HotMenuPage() {
         const matches = foods.filter(food => {
             const tags = food.tags?.join(' ').toLowerCase() ?? '';
             const haystack = `${food.truckId} ${food.truckName} ${food.foodName} ${food.description} ${tags}`.toLowerCase();
-            return keywords.every(keyword => haystack.includes(keyword));
+            return haystack.includes(keywords.join(' '));
         });
 
         // Extract truck IDs from the matched foods

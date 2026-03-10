@@ -69,7 +69,6 @@ export function filterByTruckIds<T>(
     showed: ShowedTruckIds,
     getTruckId: (item: T) => number
 ): T[] {
-    if (showed === null) return items;
-    if (showed.length === 0) return [];
+    if (!showed || !showed.length) return items;
     return items.filter(item => showed.includes(getTruckId(item)));
 }

@@ -33,6 +33,10 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
     // Function to determine the direction of the sort arrow
     const arrow = (key: string) => sortKey === key ? (isDesc ? " ↑" : " ↓") : "";
 
+    const searchParams = useSearchParams();
+    const showed = parseTruckIds(searchParams.get('truckIds'));
+    const visibleSchedules = filterByTruckIds(sortSchedules, showed, schedule => schedule.truckId);
+
     return (
         <div className="schedule-grid">
             <table className="w-full table-fixed border-collapse">
