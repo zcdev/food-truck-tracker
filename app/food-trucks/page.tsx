@@ -51,7 +51,7 @@ export default function FoodTruckPage() {
 
     return (
         <section className='food-truck-section pt-8 md:pt-16 m-auto'>
-            <h2 className='text-3xl font-bold text-center md:text-left'>Food Trucks</h2>
+            <h2 className='text-3xl font-bold text-center md:text-left'>About Us</h2>
             <FoodTruckGrid
                 visibleTrucks={visibleTrucks}
                 onClick={handleTruckClick}

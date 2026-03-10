@@ -41,9 +41,9 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
         <div className="schedule-grid">
             <table className="w-full table-fixed border-collapse">
                 <thead>
-                    <tr className="text-amber-400 text-lg font-bold border-b border-stone-500 pb-4">
+                    <tr className="text-amber-400 text-xs md:text-lg font-bold border-b border-stone-500 pb-4">
                         <td
-                            className="text-left py-2 w-[30%]"
+                            className="text-left py-2 w-[30%] pl-3"
                             aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
                             <button onClick={() => onSort("truckName")} className="w-full text-left">
