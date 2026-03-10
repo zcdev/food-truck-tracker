@@ -78,8 +78,8 @@ export default function HotMenuPage() {
     };
 
     return (
-        <section className='hot-menu-section max-w-5xl pt-54 md:pt-0 px-8 md:px-0'>
-            <h2 className='text-3xl font-bold text-center md:text-left'>Hot Menu</h2>
+        <section id="hot-menu" className='hot-menu-section relative mt-[210px] mb-8 max-w-5xl px-8 md:px-0'>
+            <h2 id="hot-menu" className='pt-10 text-3xl font-bold text-center md:text-left '>Hot Menu</h2>
             <SearchInput
                 query={query}
                 onChange={handleChange}

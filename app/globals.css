@@ -11,6 +11,14 @@
   --text-shadow-xl: 5px 3px 3px rgb(253, 199, 0 / 0.25); 
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#hot-menu, #schedule, #about {
+  scroll-margin-top: 205px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

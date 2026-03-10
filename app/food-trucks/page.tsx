@@ -50,8 +50,8 @@ export default function FoodTruckPage() {
     const visibleTrucks = filterByTruckIds(trucks, showed, truck => truck.truckId);
 
     return (
-        <section className='food-truck-section pt-8 md:pt-16 m-auto'>
-            <h2 className='text-3xl font-bold text-center md:text-left'>About Us</h2>
+        <section className='about-section m-auto'>
+            <h2 id="about" className='pt-10 text-3xl font-bold text-center md:text-left'>About Us</h2>
             <FoodTruckGrid
                 visibleTrucks={visibleTrucks}
                 onClick={handleTruckClick}

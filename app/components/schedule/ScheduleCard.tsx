@@ -47,10 +47,10 @@ export default function ScheduleCard({ schedule, currentTime }: Props) {
 
     return (
         <tr className="text-xs md:text-md lg:text-lg text-white border-b border-stone-500 pb-4">
-            <td className="py-3 px-3 w-[30%] text-yellow-100 italic">@{schedule.truckName}</td>
-            <td className="py-3">{schedule.location}</td>
-            <td className="py-3">{formattedNextArrival}</td>
-            <td className="py-3">{formattedMinutesAway}</td>
+            <td className="w-[40%] pl-3 md:pl-0 py-3 text-yellow-100 italic">@{schedule.truckName}</td>
+            <td className="w-[20%] pl-3 md:pl-0 py-3">{schedule.location}</td>
+            <td className="w-[20%] pl-3 md:pl-0 py-3">{formattedNextArrival}</td>
+            <td className="w-[20%] pl-3 md:pl-0 py-3">{formattedMinutesAway}</td>
         </tr>
     );
 }

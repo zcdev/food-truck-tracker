@@ -38,39 +38,39 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
     const visibleSchedules = filterByTruckIds(sortSchedules, showed, schedule => schedule.truckId);
 
     return (
-        <div className="schedule-grid">
+        <div className="schedule-grid text-wrap">
             <table className="w-full table-fixed border-collapse">
                 <thead>
-                    <tr className="text-amber-400 text-xs md:text-lg font-bold border-b border-stone-500 pb-4">
+                    <tr className="text-amber-400 text-[11px] md:text-lg font-bold border-b border-stone-500">
                         <td
-                            className="text-left py-2 w-[30%] pl-3"
+                            className="text-left pl-3 md:pl-0 pb-3 w-[13%] md:w-[260px]"
                             aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("truckName")} className="w-full text-left">
+                            <button onClick={() => onSort("truckName")} className="w-full text-left text-nowrap">
                                 Truck Name{arrow("truckName")}
                             </button>
                         </td>
                         <td
-                            className="text-left py-2"
+                            className="text-left pl-3 md:pl-0 pb-3 w-[12%] md:w-[212px]"
                             aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("location")} className="w-full text-left">
+                            <button onClick={() => onSort("location")} className="w-full text-left text-nowrap">
                                 Location{arrow("location")}
                             </button>
                         </td>
                         <td
-                            className="text-left py-2"
+                            className="text-left pl-3 md:pl-0 pb-3 w-[13%] md:w-[212px]"
                             aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("nextArrival")} className="w-full text-left">
+                            <button onClick={() => onSort("nextArrival")} className="w-full text-left text-nowrap">
                                 Next Arrival{arrow("nextArrival")}
                             </button>
                         </td>
                         <td
-                            className="text-left py-2"
+                            className="text-left pl-3 md:pl-0 pb-3 w-[16%] md:w-[212px]"
                             aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("minutesAway")} className="w-full text-left">
+                            <button onClick={() => onSort("minutesAway")} className="w-full text-left text-nowrap">
                                 Minutes Away{arrow("minutesAway")}
                             </button>
                         </td>
