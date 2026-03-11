@@ -34,6 +34,8 @@ export default function ScheduleGrid({ schedules, currentTime }: Props) {
     const arrow = (key: string) => sortKey === key ? (isDesc ? " ↑" : " ↓") : "";
 
     const searchParams = useSearchParams();
+
+    // Util helpers to get truckIds from param and display filtered truck logos
     const showed = parseTruckIds(searchParams.get('truckIds'));
     const visibleSchedules = filterByTruckIds(sortSchedules, showed, schedule => schedule.truckId);
 

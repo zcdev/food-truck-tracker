@@ -1,5 +1,3 @@
-export type ViewPhase = "home" | "hot-menu" | "schedule" | "food-trucks";
-
 export interface Truck {
     truckId: number;
     truckName: string;
@@ -10,7 +8,7 @@ export interface Truck {
 export interface Food {
     truckId: number;
     truckName: string;
-    foodName: string; // Hottest item
+    foodName: string;
     foodImg: string;
     description: string;
     price: number;

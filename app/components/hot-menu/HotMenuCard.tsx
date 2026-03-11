@@ -5,6 +5,7 @@ type Props = {
     food: Food;
 };
 
+// Show rating stars from the food props
 const rating = ({ food }: Props) => {
     const stars = food.rating;
     const ratingStars = [];

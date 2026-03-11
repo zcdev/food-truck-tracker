@@ -56,7 +56,7 @@ export function parseTruckIds(value: string | null | undefined): ShowedTruckIds 
     const ids = value
         .split(',')
         .map(s => Number(s.trim()))
-        .filter(n => Number.isFinite(n));
+        .filter(n => Number(n));
 
     if (ids.length === 0) return [];
 

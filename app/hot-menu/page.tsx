@@ -17,7 +17,6 @@ export default function HotMenuPage() {
     const params = new URLSearchParams(searchParams.toString());
     const keywords = query.toLowerCase().split(' ');
 
-
     // Memoized filtered foods based on the search query
     const { filteredFoods, foodTruckIds } = useMemo(() => {
         if (!keywords && keywords === '') {
@@ -51,6 +50,7 @@ export default function HotMenuPage() {
         }
     };
 
+    // Handle form submission
     const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
 

@@ -46,6 +46,7 @@ export default function FoodTruckPage() {
 
     }, [isModalOpen, closeModal]);
 
+    // Util helpers to get truckIds from param and display filtered truck logos
     const showed = parseTruckIds(searchParams.get('truckIds'));
     const visibleTrucks = filterByTruckIds(trucks, showed, truck => truck.truckId);
 
