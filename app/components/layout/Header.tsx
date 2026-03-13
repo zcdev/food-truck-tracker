@@ -1,6 +1,9 @@
+'use client';
 import Link from "next/link";
 import Nav from "./Nav";
+
 export default function Header() {
+
     return (
         <header className="fixed z-5 md:max-w-4xl flex pt-6 md:pt-8 bg-stone-800 border-b-1 border-yellow-100 w-full px-8 md:px-0 pb-2 md:pb-6">
             <div className="max-w-[280px] md:max-w-full flex flex-col md:flex-col-reverse">
