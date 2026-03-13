@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 export default function Nav() {
     return (
         <nav className="flex flex-col md:flex-row gap-0 md:gap-6 justify-center md:justify-start text-sm md:text-lg font-medium text-white mb-4 md:mb-0 mt-3">

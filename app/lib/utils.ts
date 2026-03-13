@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Schedule } from "@/app/lib/types";
+import { Schedule, Food } from "@/app/lib/types";
 
 // Custom hook to get the current time, updating every second
 export function useCurrentTime(intervalMs = 1000) {
@@ -69,6 +69,11 @@ export function filterByTruckIds<T>(
     showed: ShowedTruckIds,
     getTruckId: (item: T) => number
 ): T[] {
-    if (!showed || !showed.length) return items;
+    if (!showed || showed.length === 0) return items;
     return items.filter(item => showed.includes(getTruckId(item)));
+}
+
+// Most popular hot-menu items as recommended
+export function recommendFoods(foods: Food[]) {
+    return foods.filter(food => food.rating === 5);
 }
