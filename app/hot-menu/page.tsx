@@ -13,9 +13,10 @@ export default function HotMenuPage() {
     const router = useRouter();
     const pathname = usePathname();
 
-    // Variables to store searchParams and the current query
+    // Variables
     const params = new URLSearchParams(searchParams.toString());
     const currentQuery = searchParams.get('query') ?? '';
+    const show = searchParams.get('show') ?? '';
 
     // Store search query, keywords, and foods data to state
     const [query, setQuery] = useState(currentQuery);
@@ -57,16 +58,13 @@ export default function HotMenuPage() {
             : recommendFoods(foods)
         : foods;
 
-    // Get the truck IDs from the recommended foods
-    const hotTruckIds = recommendFoods(foods).map(id => id.truckId);
-
     // Function to reset the search results and clear URL parameters
     const resetSearch = () => {
-        setQuery('');
-        setIsShow(false);
+        router.replace(`${pathname}`);
         params.delete('query');
         params.delete('truckIds');
-        router.replace(`${pathname}`);
+        setQuery('');
+        setIsShow(false);
     };
 
     // Handler for search input changes
@@ -87,6 +85,9 @@ export default function HotMenuPage() {
         // Get the food truck IDs as a comma-separated string for the URL query parameter
         const truckIdsString: string | undefined = foodTruckIds?.join(',') ?? '';
 
+        // Get the truck IDs from the recommended foods
+        const hotTrucksIds = recommendFoods(foods).map(id => id.truckId);
+
         // If keywords are valid, update the URL with the keywords and truck IDs
         if (keywords.length) {
             params.set('query', keywords.join(' '));
@@ -94,19 +95,31 @@ export default function HotMenuPage() {
         }
 
         // Set item not found status and pass hot truck IDs from recommended foods
-        if (!truckIdsString) {
+        if (keywords.length && !truckIdsString) {
             params.set('status', 'not-found');
-            params.set('truckIds', hotTruckIds.toString());
+            params.set('truckIds', hotTrucksIds.toString());
             setIsShow(true);
         }
 
-        // Update URL
-        router.replace(`${pathname}?${params}`);
+        router.replace(`/${pathname}?${params}`);
     };
 
     useEffect(() => {
+
+        // Set query as currentQuery
         setQuery(currentQuery);
-    }, [currentQuery]);
+
+        // In the edge case when users click on the anchor links when no search item is found, delete params
+        if (isShow === true && show === 'false') {
+            params.delete('query');
+            params.delete('truckIds');
+        };
+
+        // Reset when users hit home
+        const url = new URL(window.location.href).toString();
+        if (url.includes('#home')) resetSearch();
+
+    }, [currentQuery, searchParams]);
 
     return (
         <section id="hot-menu" className='hot-menu-section relative mt-[210px] mb-8 max-w-5xl px-8 md:px-0' >
