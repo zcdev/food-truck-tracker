@@ -19,7 +19,7 @@ export default function HotMenuPage() {
 
     // Store search query, keywords, and foods data to state
     const [query, setQuery] = useState(currentQuery);
-    const [isNotFound, setIsNotFound] = useState(false);
+    const [isShow, setIsShow] = useState(false);
 
     // Store keywords from the query as a string
     const keywords = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -48,19 +48,22 @@ export default function HotMenuPage() {
 
     // Util helpers to get truckIds from the params and display filtered hot menu items
     const showed = parseTruckIds(searchParams.get('truckIds'));
-    const visibleTrucks = filterByTruckIds(filteredFoods, showed, food => food.truckId);
+    const visibleFoods = filterByTruckIds(filteredFoods, showed, food => food.truckId);
 
     // Conditionally display foods by checking searched items
     const displayFoods = currentQuery
-        ? visibleTrucks.length
-            ? visibleTrucks
+        ? visibleFoods.length
+            ? visibleFoods
             : recommendFoods(foods)
         : foods;
+
+    // Get the truck IDs from the recommended foods
+    const hotTruckIds = recommendFoods(foods).map(id => id.truckId);
 
     // Function to reset the search results and clear URL parameters
     const resetSearch = () => {
         setQuery('');
-        setIsNotFound(false);
+        setIsShow(false);
         params.delete('query');
         params.delete('truckIds');
         router.replace(`${pathname}`);
@@ -90,10 +93,11 @@ export default function HotMenuPage() {
             params.set('truckIds', truckIdsString);
         }
 
-        // If searched items not found, set query to "not-found"
+        // Set item not found status and pass hot truck IDs from recommended foods
         if (!truckIdsString) {
-            setIsNotFound(true);
-            params.delete('truckIds');
+            params.set('status', 'not-found');
+            params.set('truckIds', hotTruckIds.toString());
+            setIsShow(true);
         }
 
         // Update URL
@@ -105,14 +109,14 @@ export default function HotMenuPage() {
     }, [currentQuery]);
 
     return (
-        <section id="hot-menu" className='hot-menu-section relative mt-[210px] mb-8 max-w-5xl px-8 md:px-0'>
+        <section id="hot-menu" className='hot-menu-section relative mt-[210px] mb-8 max-w-5xl px-8 md:px-0' >
             <h2 id="hot-menu" className='pt-10 text-3xl font-bold text-center md:text-left'>Hot Menu</h2>
             <SearchInput
                 query={query}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
             />
-            <HotMenuGrid foods={displayFoods} isNotFound={isNotFound} />
-        </section>
+            <HotMenuGrid foods={displayFoods} isShow={isShow} />
+        </section >
     );
 };

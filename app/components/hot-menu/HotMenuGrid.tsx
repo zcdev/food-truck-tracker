@@ -4,13 +4,13 @@ import HotMenuItem from './HotMenuCard';
 
 type Props = {
     foods: Food[];
-    isNotFound: Boolean;
+    isShow: Boolean;
 };
 
-export default function HotMenuGrid({ foods, isNotFound }: Props) {
+export default function HotMenuGrid({ foods, isShow }: Props) {
     return (
         <>
-            {isNotFound &&
+            {isShow === true &&
                 <div>
                     <h3 className='text-2xl'> We couldn't find that item. These are <em className='text-yellow-100 font-bold text-flame'>HOT</em> 🔥 right now:</h3>
                 </div>
