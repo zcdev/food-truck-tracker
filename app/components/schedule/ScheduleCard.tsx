@@ -1,46 +1,48 @@
 'use client';
 import { Schedule } from '@/app/lib/types';
 import { useState, useEffect } from 'react';
+import { useCurrentTime } from '@/app/lib/utils';
+import { time } from 'console';
 
 type Props = {
     schedule: Schedule;
-    currentTime: number;
 };
 
-export default function ScheduleCard({ schedule, currentTime }: Props) {
+export default function ScheduleCard({ schedule }: Props) {
 
-    const milliSec = 1000; // 1 second in milliseconds
+    // Get current time now
+    const currentTime = useCurrentTime();
 
-    const milliSecAway = schedule.minutesAway * 60 * milliSec; // Convert minutesAway to milliseconds
+    // As millisecond
+    const oneSec = 1000;
 
-    const nextArrivalTime = currentTime + milliSecAway; // Calculate the sum of current time and milliSecAway to get the next arrival time
+    // Store the minutesAway in millisecond for reuse
+    const duration = schedule.minutesAway * 60 * oneSec;
 
-    // State to track the remaining time until the next truck arrives, initialized with the calculated milliSecAway
-    const [nextArrival, setNextArrival] = useState(nextArrivalTime);
-    const [timeAway, setTimeAway] = useState(milliSecAway);
+    // Store duration in state
+    const [timeAway, setTimeAway] = useState(duration);
 
-    // Set up an interval to update the remaining time every second
+    // Store the computed next food truck arrival time
+    const [nextArrival, setNextArrival] = useState(currentTime + duration);
+
+    // Counting down by 1 sec for the minutes away
     useEffect(() => {
         const remainingTime = setInterval(() => {
-            setTimeAway(prev => prev - milliSec); // Count down by 1 second
-        }, milliSec);
-
-        return () => clearInterval(remainingTime); // Clean up the interval on component unmount
+            setTimeAway(prev => prev - oneSec);
+        }, oneSec);
+        return () => clearInterval(remainingTime);
     }, []);
 
     // Reset when the timer runs out and update the next arrival
     useEffect(() => {
-        if (timeAway <= 0) {
-            setTimeAway(milliSecAway);
-            setNextArrival(nextArrivalTime);
+        if (timeAway === 0) {
+            setTimeAway(duration);
+            setNextArrival(prev => nextArrival + duration);
         }
     }, [timeAway, nextArrival]);
 
-    // Get the total time away in milliseconds
-    const totalTimeAway = new Date(timeAway).getTime();
-
     // Format the total time away as MM:SS, ensuring that minutes and seconds are always two digits
-    const formattedMinutesAway = `${Math.floor(totalTimeAway / 60 / milliSec).toString().padStart(2, '0')}:${Math.floor((totalTimeAway / milliSec) % 60).toString().padStart(2, '0')}`;
+    const formattedMinutesAway = `${Math.floor(timeAway / 60 / oneSec).toString().padStart(2, '0')}:${Math.floor((timeAway / oneSec) % 60).toString().padStart(2, '0')}`;
 
     // Format the next arrival time as HH:MM in 12-hour format
     const formattedNextArrival = new Date(nextArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

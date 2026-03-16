@@ -20,5 +20,5 @@ export interface Schedule {
     truckId: number;
     truckName: string;
     location: string;
-    minutesAway: number; // Time waiting for the next truck
+    minutesAway: number;
 }
