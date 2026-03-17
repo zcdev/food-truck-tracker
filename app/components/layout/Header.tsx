@@ -11,13 +11,13 @@ export default function Header() {
     const url = `?${params}#home`;
 
     return (
-        <header className="fixed z-5 md:max-w-4xl flex pt-6 md:pt-8 bg-stone-800 border-b-1 border-yellow-100 w-full px-8 md:px-0 pb-2 md:pb-6">
-            <div className="max-w-[280px] md:max-w-full flex flex-col md:flex-col-reverse">
-                <div className="md:pt-4">
-                    <h1 className="font-headline text-4xl md:text-6xl text-amber-400 text-left"><Link href={`/${url}`}>Food Truck Tracker</Link></h1>
-                    <h2 className="text-xl md:text-2xl text-yellow-100 tracking-normal text-left">Your next bite is on the <em className='tracking-widest text-flame'>move</em>.</h2>
-                </div>
+        <header className="fixed z-5 max-w-full md:max-w-4xl md:flex pt-6 md:pt-8 bg-stone-800 border-b-1 border-yellow-100 w-full px-8 md:px-0 pb-6">
+            <div className="max-w-full">
                 <Nav />
+                <div className="md:pt-4">
+                    <h1 className="font-headline text-4xl md:text-6xl text-amber-400 text-center md:text-left"><Link href={`/${url}`}>Food Truck Tracker</Link></h1>
+                    <h2 className="text-xl md:text-2xl text-yellow-100 tracking-normal text-center md:text-left">Your next bite is on the <em className='tracking-widest text-flame'>move</em>.</h2>
+                </div>
             </div>
         </header>
     );
