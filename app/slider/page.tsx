@@ -14,7 +14,7 @@ import { nextFoodTruck } from '@/app/lib/utils';
 export default function SliderPage() {
     const nextTrucks = nextFoodTruck(schedules);
     return (
-        <div className="swiper relative mt-[210px] mb-8 max-w-xs md:max-w-5xl px-8 md:px-0">
+        <div className="swiper relative mt-[150px] md:mt-[210px] mb-8 md:mb-2 max-w-sm md:max-w-5xl px-0">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                 speed={800}

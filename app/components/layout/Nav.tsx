@@ -14,12 +14,12 @@ export default function Nav() {
     params.set('show', 'false');
 
     return (
-        <nav className="flex flex-col md:flex-row gap-0 md:gap-6 justify-center md:justify-start text-sm md:text-lg font-medium text-white mb-4 md:mb-0 mt-3">
-            <Link href={`/?${params}#hot-menu`} className="hover:text-orange-600 transition-colors"><span className="inline md:hidden text-lg">» </span>Hot Menu</Link>
-            <span className="hidden md:inline"> | </span>
-            <Link href={`/?${params}#schedule`} className="hover:text-orange-600 transition-colors"><span className="inline md:hidden text-lg">» </span>Schedule</Link>
-            <span className="hidden md:inline"> | </span>
-            <Link href={`/?${params}#about`} className="hover:text-orange-600 transition-colors"><span className="inline md:hidden text-lg">» </span>About Us</Link>
+        <nav className="flex flex-col flex-row gap-0 md:gap-6 justify-center md:justify-start text-sm md:text-lg font-medium text-white text-center md:text-left mb-4 md:mb-0 mt-3">
+            <Link href={`/?${params}#hot-menu`} className="hover:text-orange-600 transition-colors ">Hot Menu</Link>
+            <span className="px-4 md:px-0"> | </span>
+            <Link href={`/?${params}#schedule`} className="hover:text-orange-600 transition-colors ">Schedule</Link>
+            <span className="px-4 md:px-0"> | </span>
+            <Link href={`/?${params}#about`} className="hover:text-orange-600 transition-colors ">About Us</Link>
         </nav>
     );
 }
