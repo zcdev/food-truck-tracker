@@ -73,7 +73,12 @@ export function filterByTruckIds<T>(
     return items.filter(item => showed.includes(getTruckId(item)));
 }
 
-// Most popular hot-menu items as recommended
+// Get most popular hot-menu items as recommended
 export function recommendFoods(foods: Food[]) {
     return foods.filter(food => food.rating === 5);
+}
+
+// Get the next arrival trucks for the slider
+export function nextFoodTruck(trucks: Schedule[]) {
+    return trucks.filter(truck => truck.minutesAway === 10);
 }
