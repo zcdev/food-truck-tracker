@@ -22,7 +22,7 @@ html {
 }
 
 #hot-menu, #schedule, #about {
-  scroll-margin-top: 205px;
+  scroll-margin-top: 197px;
 }
 
 body {
@@ -112,19 +112,13 @@ body {
     margin-left: 0px;
   }
 
-  .slide-one {
-    background-position: bottom;
-    background-size: 106%;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    height: 450px;
+  .swiper-slide {
+    width: 100% !important;
   }
 
-  .slide-two-three  {
+  .slide-one, .slide-two-three {
     background-position: bottom;
     background-size: 106%;
-    margin-top: 30px;
-    margin-bottom: 15px;
     height: 450px;
   }
 
@@ -134,10 +128,6 @@ body {
 
   .swiper-button-prev, .swiper-button-next {
     top: 42% !important;
-  }
-
-  #hot-menu, #schedule, #about {
-    scroll-margin-top: 164px;
   } 
 
   .hottest-item .img-wrapper {
@@ -153,5 +143,9 @@ body {
 
   .content p {
     white-space: normal;
+  }
+
+  #hot-menu, #schedule, #about {
+    scroll-margin-top: 157px;
   }
 }

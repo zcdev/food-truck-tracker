@@ -51,7 +51,7 @@ export default function FoodTruckPage() {
     const visibleTrucks = filterByTruckIds(trucks, showed, truck => truck.truckId);
 
     return (
-        <section className='about-section m-auto'>
+        <section className='about-section m-auto mb-8'>
             <h2 id="about" className='pt-10 text-3xl font-bold text-center md:text-left'>About Us</h2>
             <FoodTruckGrid
                 visibleTrucks={visibleTrucks}

@@ -16,7 +16,7 @@ export default function SliderPage() {
     const hotItems = recommendFoods(foods);
 
     return (
-        <div className="swiper relative mt-[150px] md:mt-[210px] mb-8 md:mb-2 max-w-sm md:max-w-5xl px-0">
+        <div className="swiper relative mb-8 max-w-sm md:max-w-5xl px-0 mt-[157px] md:mt-[197px]">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
                 speed={400}

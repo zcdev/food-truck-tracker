@@ -11,7 +11,7 @@ export default function Header() {
     const url = `?${params}#home`;
 
     return (
-        <header className="fixed z-5 max-w-full md:max-w-4xl md:flex pt-6 md:pt-8 bg-stone-800 border-b-1 border-yellow-100 w-full px-8 md:px-0 pb-6">
+        <header className="fixed z-5 max-w-full md:max-w-4xl md:flex bg-stone-800 border-b-1 border-yellow-100 w-full pt-4 px-8 md:px-0 pb-6">
             <div className="max-w-full">
                 <Nav />
                 <div className="md:pt-4">

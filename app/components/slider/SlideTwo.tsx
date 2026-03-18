@@ -16,11 +16,11 @@ export default function SlideTwo({ hotItems }: Props) {
     if (!hotItem) return;
 
     return (
-        <div className="slide flex flex-col md:flex-row slide-two-three bg-stone-800 mt-8 pl-0 md:pl-47 text-center md:text-right">
+        <div className="slide flex flex-col md:flex-row slide-two-three bg-stone-800 pl-0 md:pl-47 text-center md:text-right">
             <div className="content w-full md:w-[43%] mr-0 md:mr-5">
-                <h1 className="text-center md:text-left text-3xl font-bold py-4">Hottest Item</h1>
-                <p className="text-center md:text-left text-lg md:text-2xl">{hotItem.foodName}</p>
-                <p className='mt-2 text-md text-center md:text-left max-w-full md:max-w-xs px-12 md:px-0'>{hotItem.description}</p>
+                <h1 className="text-center md:text-left text-3xl font-bold pt-10">Hottest Item</h1>
+                <p className="text-center md:text-left text-lg md:text-2xl pt-2">{hotItem.foodName}</p>
+                <p className='mt-1 text-md text-center md:text-left max-w-full md:max-w-xs px-12 md:px-0'>{hotItem.description}</p>
                 <p className="text-center md:text-left text-yellow-100 italic pt-2">@{hotItem.truckName}</p>
                 <p className='mt-2 text-lg text-center md:text-left font-bold text-amber-400'>Price: ${hotItem.price.toFixed(2)}</p>
             </div>

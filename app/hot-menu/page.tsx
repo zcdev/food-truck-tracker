@@ -122,7 +122,7 @@ export default function HotMenuPage() {
     }, [currentQuery, searchParams]);
 
     return (
-        <section id="hot-menu" className='hot-menu-section relative mt-0 mb-8 max-w-5xl px-8 md:px-0' >
+        <section id="hot-menu" className='hot-menu-section relative max-w-5xl px-8 md:px-0 mb-8'>
             <h2 id="hot-menu" className='pt-10 text-3xl font-bold text-center md:text-left'>Hot Menu</h2>
             <SearchInput
                 query={query}
