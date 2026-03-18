@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Chewy } from "next/font/google";
 import "./globals.css";
+export const dynamic = 'force-dynamic';
 
 const fontChewy = Chewy({
   subsets: ['latin'],
