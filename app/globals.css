@@ -79,19 +79,20 @@ body {
   border-radius: 100%;
 }
 
-.slide {
-  background-position: top center;
+.slide-one {
+  background-image: url('/images/slides/hero-bg-1.webp');
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   height: 500px;
 }
 
-.slide-one {
-  background-image: url('/images/slides/hero-bg-1.webp');
-}
-
-.slide-two {
+.slide-two-three {
   background-image: url('/images/slides/hero-bg-2.webp');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
 }
 
 @media only screen and (width <= 855px) {    
@@ -111,10 +112,19 @@ body {
   }
 
   .slide-one {
-    background-position: bottom center;
-    background-size: 155%;
-    height: 425px;
+    background-position: bottom;
+    background-size: 106%;
     margin-top: 30px;
+    margin-bottom: 15px;
+    height: 450px;
+  }
+
+  .slide-two-three  {
+    background-position: bottom;
+    background-size: 106%;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    height: 450px;
   }
 
   :root {
@@ -128,4 +138,19 @@ body {
   #hot-menu, #schedule, #about {
     scroll-margin-top: 164px;
   } 
+
+  .hottest-item .img-wrapper {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .featured-truck .img-wrapper {
+    display: inline-flex;
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .content p {
+    white-space: normal;
+  }
 }
