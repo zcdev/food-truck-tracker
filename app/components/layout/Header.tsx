@@ -16,7 +16,7 @@ export default function Header() {
                 <Nav />
                 <div className="md:pt-4">
                     <h1 className="font-headline text-4xl md:text-6xl text-amber-400 text-center md:text-left"><Link href={`/${url}`}>Food Truck Tracker</Link></h1>
-                    <h2 className="text-xl md:text-2xl text-yellow-100 tracking-normal text-center md:text-left">Your next bite is on the <em className='tracking-widest text-flame'>move</em>.</h2>
+                    <h2 className="text-xl md:text-2xl text-yellow-100 tracking-normal text-center md:text-left">Your next bite is on the <em className='tracking-widest font-bold text-flame'>MOVE</em>.</h2>
                 </div>
             </div>
         </header>

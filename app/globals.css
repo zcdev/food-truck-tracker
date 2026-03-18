@@ -10,6 +10,7 @@
   --swiper-navigation-size: 44px;
   --swiper-pagination-bullet-inactive-color: #fff;
   --swiper-pagination-bullet-inactive-opacity: 0.4;
+  --swiper-pagination-bullet-horizontal-gap: 10px;
 }
 
 @theme {
@@ -36,8 +37,8 @@ body {
 
 .text-flame {
   text-shadow:
-  0 3px 20px red,
-  0 0 30px red,
+  0 2px 20px red,
+  0 0 10px red,
   0 0 10px orange,
   0 0 5px yellow
 }

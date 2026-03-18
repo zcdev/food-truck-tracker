@@ -46,33 +46,29 @@ export default function ScheduleGrid({ schedules }: Props) {
                     <tr className="text-amber-400 text-[11px] md:text-lg font-bold border-b border-stone-500">
                         <td
                             className="text-left pl-3 md:pl-0 pb-3 w-[13%] md:w-[260px]"
-                            aria-sort={sortKey === "truckName" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("truckName")} className="w-full text-left text-nowrap">
+                            <button onClick={() => onSort("truckName")} className="w-full text-left text-nowrap" aria-label={`Truck Name ${isDesc ? "Descending" : "Ascending"}`}>
                                 Truck Name{arrow("truckName")}
                             </button>
                         </td>
                         <td
                             className="text-left pl-3 md:pl-0 pb-3 w-[12%] md:w-[212px]"
-                            aria-sort={sortKey === "location" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("location")} className="w-full text-left text-nowrap">
+                            <button onClick={() => onSort("location")} className="w-full text-left text-nowrap" aria-label={`Location ${isDesc ? "Descending" : "Ascending"}`}>
                                 Location{arrow("location")}
                             </button>
                         </td>
                         <td
                             className="text-left pl-3 md:pl-0 pb-3 w-[13%] md:w-[212px]"
-                            aria-sort={sortKey === "nextArrival" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("nextArrival")} className="w-full text-left text-nowrap">
+                            <button onClick={() => onSort("nextArrival")} className="w-full text-left text-nowrap" aria-label={`Next Arrival ${isDesc ? "Descending" : "Ascending"}`}>
                                 Next Arrival{arrow("nextArrival")}
                             </button>
                         </td>
                         <td
                             className="text-left pl-3 md:pl-0 pb-3 w-[16%] md:w-[212px]"
-                            aria-sort={sortKey === "minutesAway" ? (isDesc ? "descending" : "ascending") : "none"}
                         >
-                            <button onClick={() => onSort("minutesAway")} className="w-full text-left text-nowrap">
+                            <button onClick={() => onSort("minutesAway")} className="w-full text-left text-nowrap" aria-label={`Minutes Away ${isDesc ? "Descending" : "Ascending"}`}>
                                 Minutes Away{arrow("minutesAway")}
                             </button>
                         </td>
