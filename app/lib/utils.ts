@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Schedule, Food } from "@/app/lib/types";
+import { Schedule, Food, SortKey } from "@/app/lib/types";
 
 // Custom hook to get the current time, updating every second
 export function useCurrentTime(intervalMs = 1000) {
@@ -19,9 +19,20 @@ export function useCurrentTime(intervalMs = 1000) {
     return now;
 }
 
-export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";
+// Custom hook to the randomly picked item from the list
+export function useRandomizedItem<T>(items: T[]): T | null {
+    const [item, setItem] = useState<T | null>(null);
 
-// Function to sort schedule items based on the specified key and direction
+    useEffect(() => {
+        if (items.length === 0) return;
+        const randomPick = Math.floor(Math.random() * items.length);
+        setItem(items[randomPick]);
+    }, []);
+
+    return item;
+}
+
+// Helper to sort schedule items based on the specified key and direction
 export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDesc: boolean): Schedule[] {
 
     const dir = isDesc ? -1 : 1; // Determine sort direction multiplier as a toggle by flipping between -1 and 1
@@ -49,7 +60,7 @@ export function sortScheduleItems(schedules: Schedule[], sortKey: SortKey, isDes
 
 export type ShowedTruckIds = number[] | null;
 
-// Function to parse a comma-separated string of truck IDs into an array of numbers
+// Helper to parse a comma-separated string of truck IDs into an array of numbers
 export function parseTruckIds(value: string | null | undefined): ShowedTruckIds {
     if (!value) return [];
 
@@ -63,7 +74,7 @@ export function parseTruckIds(value: string | null | undefined): ShowedTruckIds 
     return Array.from(new Set(ids));
 }
 
-// Function to filter items based on showed truck IDs, using a provided function to extract the truck ID from each item
+// Helper to filter items based on showed truck IDs, using a provided function to extract the truck ID from each item
 export function filterByTruckIds<T>(
     items: T[],
     showed: ShowedTruckIds,

@@ -22,3 +22,5 @@ export interface Schedule {
     location: string;
     minutesAway: number;
 }
+
+export type SortKey = "truckName" | "location" | "minutesAway" | "nextArrival";

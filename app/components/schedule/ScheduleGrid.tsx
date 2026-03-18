@@ -3,7 +3,8 @@ import { Schedule } from '@/app/lib/types';
 import ScheduleCard from './ScheduleCard';
 import { useMemo, useState } from "react";
 import { useSearchParams } from 'next/navigation';
-import { sortScheduleItems, SortKey, parseTruckIds, filterByTruckIds } from "@/app/lib/utils";
+import { SortKey } from '@/app/lib/types';
+import { sortScheduleItems, parseTruckIds, filterByTruckIds } from "@/app/lib/utils";
 
 type Props = {
     schedules: Schedule[];
