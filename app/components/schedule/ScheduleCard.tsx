@@ -2,7 +2,6 @@
 import { Schedule } from '@/app/lib/types';
 import { useState, useEffect } from 'react';
 import { useCurrentTime } from '@/app/lib/utils';
-import { time } from 'console';
 
 type Props = {
     schedule: Schedule;
@@ -12,6 +11,9 @@ export default function ScheduleCard({ schedule }: Props) {
 
     // Get current time now
     const currentTime = useCurrentTime();
+
+    // If currentTime is null, don't proceed
+    if (!currentTime) return;
 
     // As millisecond
     const oneSec = 1000;
