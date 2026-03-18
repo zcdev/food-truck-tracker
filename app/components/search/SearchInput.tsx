@@ -13,7 +13,7 @@ export default function SearchInput({ onChange, onSubmit, query }: Props) {
                     id='search'
                     type='text'
                     placeholder='What you are craving now?'
-                    className='flex w-full text-sm md:text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 px-4 py-3 mr-4'
+                    className='flex w-full text-[17px] md:text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 px-4 py-3 mr-4'
                     value={query}
                     onChange={onChange}
                     autoComplete="off"

@@ -19,11 +19,11 @@ export default function SliderPage() {
         <div className="swiper relative mt-[150px] md:mt-[210px] mb-8 md:mb-2 max-w-sm md:max-w-5xl px-0">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-                speed={800}
+                speed={400}
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
-                autoplay={{ delay: 6000, disableOnInteraction: true }}
+                autoplay={{ delay: 10000, disableOnInteraction: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
             >
