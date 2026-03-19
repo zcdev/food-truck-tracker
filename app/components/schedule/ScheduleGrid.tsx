@@ -1,14 +1,17 @@
 'use client';
 import { Schedule } from '@/app/lib/types';
-import ScheduleCard from './ScheduleCard';
 import { useMemo, useState } from "react";
 import { useSearchParams } from 'next/navigation';
 import { SortKey } from '@/app/lib/types';
 import { sortScheduleItems, parseTruckIds, filterByTruckIds } from "@/app/lib/utils";
+import dynamic from 'next/dynamic';
 
 type Props = {
     schedules: Schedule[];
 };
+
+// Disable prerendering on ScheduleCard to prevent hydration mismatches
+const ScheduleCard = dynamic(() => import('./ScheduleCard'), { ssr: false });
 
 export default function ScheduleGrid({ schedules }: Props) {
     // State to track the current sort key and direction
