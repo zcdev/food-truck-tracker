@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 export default function ScheduleClock() {
-    const [time, setTime] = useState(new Date());
+    const [time, setTime] = useState<Date>(new Date());
 
     useEffect(() => {
         // Update the time every second
