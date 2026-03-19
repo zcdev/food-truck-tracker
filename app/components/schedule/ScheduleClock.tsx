@@ -1,28 +1,28 @@
-import { useCurrentTime } from '@/app/lib/utils';
+'use client';
 import { useEffect, useState } from "react";
 
 export default function ScheduleClock() {
-    // Get the current time using the custom hook, which updates every second
-    const currentTime = useCurrentTime();
+    const [time, setTime] = useState(new Date());
 
-    // Store mounted state
-    const [mounted, setMounted] = useState(false);
-
-    // When the component is mounted, update state to true
     useEffect(() => {
-        setMounted(true);
+        // Update the time every second
+        const timerId = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+
+        // Cleanup interval on component unmount
+        return () => clearInterval(timerId);
     }, []);
 
-    // Render a stable placeholder on the server, then show the live time only after mount
-    const formattedCurrentTime =
-        mounted && currentTime
-            ? new Date(currentTime).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-            })
-            : "--:--:--";
+    // Format the time using standard JS methods
+    const formattedTime = time.toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true
+    });
+
     return (
-        <>Current Time: {formattedCurrentTime}</>
+        <>Current Time: {formattedTime}</>
     );
 }

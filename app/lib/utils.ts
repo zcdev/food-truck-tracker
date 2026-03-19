@@ -5,7 +5,7 @@ import { Schedule, Food, SortKey } from "@/app/lib/types";
 export function useCurrentTime(intervalMs = 1000) {
 
     // State to hold the current time in milliseconds since the Unix epoch
-    const [now, setNow] = useState<number | null>(Date.now());
+    const [now, setNow] = useState<number>(Date.now());
 
     useEffect(() => {
         const tick = () => setNow(Date.now());
