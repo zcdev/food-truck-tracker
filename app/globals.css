@@ -119,7 +119,6 @@ body {
   .slide-one, .slide-two-three {
     background-position: bottom;
     background-size: 106%;
-    height: 450px;
   }
 
   :root {
@@ -127,7 +126,7 @@ body {
   }
 
   .swiper-button-prev, .swiper-button-next {
-    top: 42% !important;
+    top: 30% !important;
   } 
 
   .hottest-item .img-wrapper {
@@ -147,5 +146,9 @@ body {
 
   #hot-menu, #schedule, #about {
     scroll-margin-top: 157px;
+  }
+
+  .swiper-pagination {
+    position: relative !important;
   }
 }

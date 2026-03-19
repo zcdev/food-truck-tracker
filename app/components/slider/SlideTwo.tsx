@@ -24,7 +24,7 @@ export default function SlideTwo({ hotItems }: Props) {
                 <p className="text-center md:text-left text-yellow-100 italic pt-2">@{hotItem.truckName}</p>
                 <p className='mt-2 text-lg text-center md:text-left font-bold text-amber-400'>Price: ${hotItem.price.toFixed(2)}</p>
             </div>
-            <div className="hottest-item flex justify-center md:justify-end items-end md:pr-33 md:pb-33 mt-4 md:mt-0">
+            <div className="hottest-item flex justify-center md:justify-end items-end md:pr-33 md:pb-33 mt-3 md:mt-0">
                 <ImageWrapper
                     className='food-image inline-flex'
                     src={hotItem.foodImg}
