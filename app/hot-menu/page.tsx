@@ -60,7 +60,7 @@ export default function HotMenuPage() {
 
     // Function to reset the search results and clear URL parameters
     const resetSearch = () => {
-        router.replace(`${pathname}`, { scroll: false });
+        router.push(`${pathname}`, { scroll: false });
         params.delete('query');
         params.delete('truckIds');
         setQuery('');
@@ -101,7 +101,7 @@ export default function HotMenuPage() {
             setIsShow(true);
         }
 
-        router.replace(`/${pathname}?${params}`, { scroll: false });
+        router.push(`/${pathname}?${params}`, { scroll: false });
     };
 
     useEffect(() => {
