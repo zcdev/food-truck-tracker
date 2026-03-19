@@ -12,7 +12,7 @@ export default function FoodTruckModal({ truck, onClose }: Props) {
             <div
                 role="dialog"
                 aria-modal="true"
-                className="modal relative max-h-[calc(100dvh-2rem)] bg-white my-auto rounded-2xl max-w-xl text-left text-black shadow-lg overflow-y-scroll"
+                className="modal relative max-h-[calc(100dvh-2rem)] bg-white my-auto rounded-2xl md:max-w-xl text-left text-black shadow-lg overflow-x-hidden overflow-y-scroll"
                 tabIndex={-1}
             >
                 <div className='pb-10 pl-10'>
