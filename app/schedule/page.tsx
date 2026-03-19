@@ -2,19 +2,30 @@
 import { schedules } from '@/app/lib/data/schedule';
 import ScheduleGrid from '@/app/components/schedule/ScheduleGrid';
 import { useCurrentTime } from '@/app/lib/utils';
+import { useEffect, useState } from "react";
 
 export default function SchedulePage() {
 
     // Get the current time using the custom hook, which updates every second
     const currentTime = useCurrentTime();
 
-    // Render a fallback if currentTime is null
-    if (!currentTime) return "--:--:--";
-    const formattedCurrentTime = new Date(currentTime).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-    });
+    // Store mounted state
+    const [mounted, setMounted] = useState(false);
+
+    // When the component is mounted, update state to true
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Render a stable placeholder on the server, then show the live time only after mount
+    const formattedCurrentTime =
+        mounted && currentTime
+            ? new Date(currentTime).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+            })
+            : "--:--:--";
 
     return (
         <section id="schedule" className='schedule-section max-w-5xl mb-8'>
