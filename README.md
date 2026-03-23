@@ -24,25 +24,25 @@ Explore the Food Truck Tracker — a real-time simulated, search-enabled web app
 - Vercel Deployment
 - Swiper.js (carousel plugin)
 
-## Features
-
-**Real-Time Scheduling:** <br />Implemented a live clock to compute durations from the current client time, accurately calculating upcoming arrivals down to the millisecond and formatting output in 12-hour time.
-
-**Swiper Carousel Integration:** <br />Implemented a touch-optimized carousel using Swiper.js with autoplay, maintaining responsive layouts and consistent slide dimensions across viewports.
-
-**Hot Menu Item Search:** <br />Built a client-side search with controlled input state and dynamic filtering logic to return relevant menu items with minimal re-rendering.
-
-**Schedule Sorting:** <br />Developed accessible sorting controls on the schedule table header to allow users to toggle between ascending and descending order.
-
-**Real-Time Scheduling:** <br />Implemented a live clock to compute durations from the current client time, accurately calculating upcoming arrivals down to the millisecond and convert to 12-hour format.
-
-**Food Truck Modal:** <br />Designed a lightweight modal to display detailed food truck info.
+## Architecture
 
 **UI & State Management:** <br />Optimized state updates by `useEffect()` to minimize unnecessary re-renders, ensuring smooth interactions under frequent time-based updates.
 
 **SSR/CSR Boundary Handling:** <br />Resolved hydration issues by isolating time-sensitive logic to the client, preventing server-client render mismatches in production.
 
 **URL State Management with `useSearchParams`:** <br />Enabled dynamic rendering and leveraged Next.js App Router `useSearchParams` to persist query parameters across navigation, ensuring consistent routing behavior in edge cases while preserving scroll position.
+
+## Features
+
+**Real-Time Scheduling:** <br />Built a live clock to compute durations from the current client time, accurately calculating upcoming arrivals down to the millisecond and formatting output in 12-hour time.
+
+**Swiper Carousel Integration:** <br />Implemented a touch-optimized carousel using Swiper.js with autoplay, maintaining responsive layouts and consistent slide dimensions across viewports.
+
+**Hot Menu Item Search:** <br />Develop a client-side search with controlled input state and dynamic filtering logic to return relevant menu items with minimal re-rendering.
+
+**Schedule Sorting:** <br />Implement accessible sorting controls on the schedule table header to allow users to toggle between ascending and descending order.
+
+**Food Truck Modal:** <br />Designed and built a lightweight modal to display detailed food truck info.
 
 ## Local Development
 
