@@ -44,14 +44,7 @@ Explore the Food Truck Tracker — a real-time simulated, search-enabled web app
 
 **Food Truck Modal:** <br />Designed and built a lightweight modal to display detailed food truck info.
 
-## Local Development
-
-```
-npm install
-npm run dev
-```
-
-## Deployment Notes
+## Dev Notes
 [What I Learned from Two Next.js Production Bugs (Part 1)](https://zoechang.dev/blog/two-nextjs-prod-bugs-part-1)<br />
 [What I Learned from Two Next.js Production Bugs (Part 2)](https://zoechang.dev/blog/two-nextjs-prod-bugs-part-2)
 
