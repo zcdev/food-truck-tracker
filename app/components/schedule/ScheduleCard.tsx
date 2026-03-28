@@ -39,12 +39,12 @@ export default function ScheduleCard({ schedule }: Props) {
     useEffect(() => {
         if (timeAway === 0) {
             setTimeAway(duration);
-            setNextArrival(prev => nextArrival + duration);
+            setNextArrival(prev => prev + duration);
         }
     }, [timeAway, nextArrival]);
 
-    // Format the total time away as MM:SS, ensuring that minutes and seconds are always two digits
-    const formattedMinutesAway = `${Math.floor(timeAway / 60 / oneSec).toString().padStart(2, '0')}:${Math.floor((timeAway / oneSec) % 60).toString().padStart(2, '0')}`;
+    // Format the total time away as minutes
+    const formattedMinutesAway = `${Math.round(timeAway / 60 / oneSec).toString().padStart(2, '0')}`;
 
     // Format the next arrival time as HH:MM in 12-hour format
     const formattedNextArrival = new Date(nextArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
