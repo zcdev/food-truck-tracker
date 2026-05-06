@@ -7,7 +7,7 @@
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?logo=vercel\&logoColor=white)](https://vercel.com/)
 
 ## Live Demo
-Explore the Food Truck Tracker — a real-time simulated, search-enabled web app: [https://hybridger.vercel.app](https://hybridger.vercel.app)
+Explore the Food Truck Tracker — a real-time simulated, search-enabled web app: [https://food-truck-tracker-app.vercel.app](https://food-truck-tracker-app.vercel.app)
 
 ## Overview
 
