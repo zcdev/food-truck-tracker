@@ -19,7 +19,7 @@ export default function SearchInput({ onChange, onSubmit, query }: Props) {
                     autoComplete="off"
                     aria-label='What you are craving now'
                 />
-                <input type='submit' value='Search' className='flex mt-2 w-auto text-[17px] md:text-lg text-white font-bold bg-orange-700 rounded-lg hover:bg-orange-500 px-4 py-3' />
+                <input type='submit' value='Search' className='flex mt-2 w-auto text-[17px] md:text-lg text-stone-800 font-bold bg-yellow-100 rounded-lg hover:bg-amber-400 px-4 py-3' />
             </form>
         </div>
     );

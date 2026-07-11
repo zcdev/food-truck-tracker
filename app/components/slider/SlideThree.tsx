@@ -18,7 +18,7 @@ export default function SlideThree() {
                 <h1 className="text-center md:text-left text-3xl font-bold pt-1 md:pt-10">Featured Trucks</h1>
                 <p className="w-auto text-center md:text-left text-yellow-100 italic pt-2">@{featuredTruck.truckName}</p>
                 <p className="text-center md:text-left text-white italic max-w-full md:max-w-xs pt-0 md:pt-3 px-15 md:px-0">{featuredTruck.description}</p>
-                <Link href="/#about" className="inline-block w-auto text-[17px] md:text-lg text-white font-bold bg-orange-700 rounded-lg hover:bg-orange-500 px-4 py-3 mt-3">Trucks</Link>
+                <Link href="/#about" className="inline-block w-auto text-[17px] md:text-lg text-stone-800 font-bold bg-yellow-100 rounded-lg hover:bg-amber-400 px-4 py-3 mt-3">Trucks</Link>
             </div>
             <div className="featured-truck items-start md:items-end place-content-start mt-4 md:mt-10">
                 <ImageWrapper

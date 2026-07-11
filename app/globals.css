@@ -35,14 +35,6 @@ body {
   font-family: var(--font-headline);
 }
 
-.text-flame {
-  text-shadow:
-  0 2px 20px red,
-  0 0 10px red,
-  0 0 10px orange,
-  0 0 5px yellow
-}
-
 .img-wrapper img {
   margin: auto;
 }
