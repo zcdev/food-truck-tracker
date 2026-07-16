@@ -12,7 +12,7 @@ export default function FoodTruckPage() {
     const [selectedTruck, setSelectedTruck] = useState<Truck | null>(null);
 
     // State to track whether the modal is open
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<Boolean>(false);
 
     const searchParams = useSearchParams();
 
@@ -27,24 +27,6 @@ export default function FoodTruckPage() {
         setSelectedTruck(null);
         setIsModalOpen(false);
     };
-
-    // Handle Escape key to close the modal
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                closeModal();
-            }
-        };
-
-        //  Add event listener for keydown when the component mounts
-        document.addEventListener("keydown", handleKeyDown);
-
-        //  Clean up the event listener when the component unmounts
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-
-    }, [isModalOpen, closeModal]);
 
     // Util helpers to get truckIds from param and display filtered truck logos
     const showed = parseTruckIds(searchParams.get('truckIds'));
@@ -62,6 +44,7 @@ export default function FoodTruckPage() {
                 && <FoodTruckModal
                     truck={selectedTruck}
                     onClose={closeModal}
+                    isModalOpen={isModalOpen}
                 />
             }
         </section>
