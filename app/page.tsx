@@ -7,7 +7,7 @@ import Footer from './components/layout/Footer';
 
 export default function Home() {
   return (
-    <div className="grid place-items-center bg-stone-800">
+    <div className="flex justify-center bg-stone-800">
       <main className="max-w-5xl flex-col pb-8 md:pb-16 md:px-16 sm:items-start">
         <Header />
         <SliderPage />

@@ -33,6 +33,7 @@ body {
 
 .font-headline {
   font-family: var(--font-headline);
+  font-weight: 400;
 }
 
 .img-wrapper img {
@@ -70,6 +71,8 @@ body {
 
 .truck-logo .img-wrapper img {
   border-radius: 100%;
+  width: auto !important;
+  width: auto !important;
 }
 
 .slide-one {
