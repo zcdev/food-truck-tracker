@@ -24,8 +24,6 @@ export default function SliderPage() {
                 navigation
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 10000, disableOnInteraction: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
             >
                 <SwiperSlide><SlideOne nextTrucks={nextTrucks} /></SwiperSlide>
                 <SwiperSlide><SlideTwo hotItems={hotItems} /></SwiperSlide>
