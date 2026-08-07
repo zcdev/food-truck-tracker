@@ -38,6 +38,8 @@ body {
 
 .img-wrapper img {
   margin: auto;
+  width: auto;
+  height: auto;
 }
 
 .modal .img-wrapper img {
@@ -64,15 +66,17 @@ body {
 }
 
 .hot-menu-card .img-wrapper > img {
-  width: auto;
   transform: scale(1.4);
   margin: 0;
 }
 
+.hottest-item .img-wrapper > img, .featured-truck .img-wrapper > img {
+  width: 200px !important;
+  height: 200px !important;
+}
+
 .truck-logo .img-wrapper img {
   border-radius: 100%;
-  width: auto !important;
-  width: auto !important;
 }
 
 .slide-one {
