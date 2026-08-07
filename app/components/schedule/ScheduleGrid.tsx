@@ -45,30 +45,30 @@ export default function ScheduleGrid({ schedules }: Props) {
     return (
         <div className="schedule-grid text-wrap">
             <table className="w-full table-fixed border-collapse">
-                <tbody>
+                <thead>
                     <tr className="text-amber-400 text-[11px] md:text-lg font-bold border-b border-stone-500">
-                        <th
+                        <th scope="col"
                             className="text-left pl-3 md:pl-0 pb-3 w-[13%] md:w-[260px]"
                         >
                             <button onClick={() => onSort("truckName")} className="w-full text-left text-nowrap" aria-label={`Truck Name ${isDesc ? "Descending" : "Ascending"}`}>
                                 Truck Name{arrow("truckName")}
                             </button>
                         </th>
-                        <th
+                        <th scope="col"
                             className="text-left pl-3 md:pl-0 pb-3 w-[12%] md:w-[212px]"
                         >
                             <button onClick={() => onSort("location")} className="w-full text-left text-nowrap" aria-label={`Location ${isDesc ? "Descending" : "Ascending"}`}>
                                 Location{arrow("location")}
                             </button>
                         </th>
-                        <th
+                        <th scope="col"
                             className="text-left pl-3 md:pl-0 pb-3 w-[13%] md:w-[212px]"
                         >
                             <button onClick={() => onSort("nextArrival")} className="w-full text-left text-nowrap" aria-label={`Next Arrival ${isDesc ? "Descending" : "Ascending"}`}>
                                 Next Arrival{arrow("nextArrival")}
                             </button>
                         </th>
-                        <th
+                        <th scope="col"
                             className="text-left pl-3 md:pl-0 pb-3 w-[16%] md:w-[212px]"
                         >
                             <button onClick={() => onSort("minutesAway")} className="w-full text-left text-nowrap" aria-label={`Minutes Away ${isDesc ? "Descending" : "Ascending"}`}>
@@ -76,6 +76,8 @@ export default function ScheduleGrid({ schedules }: Props) {
                             </button>
                         </th>
                     </tr>
+                </thead>
+                <tbody>
                     <>
                         {visibleSchedules.map(schedule => {
                             return (
